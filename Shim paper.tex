@@ -113,55 +113,163 @@
 }
 
 \begin{abstract}
-Neutron electric dipole moment (nEDM) experiments require highly uniform magnetic fields to preserve spin coherence during long storage and precession times. The design and characterization of a prototype square shim coil design developed for the TUCAN EDM experiment are presented. The shim system consists of a 54-coil cubic array (3$\times$3 coils per cube face) driven by a modular 64-channel bipolar current supply.  The system is characterized inside the magnetically shielded room using three-axis fluxgate scans along a central axis.  The system qualitatively reproduces expected field profiles for each coil, and for combinations of coils use to generate harmonics of the magnetic field.  The coil currents for the harmonics are calculated from a COMSOL simulation, and fluxgate scans compare well with the expectations of the same simulation.  The results are a step toward shimming the magnetic field and imply that the system should be able provide the required field homogeneity.  ***NEED NUMERICAL RESULTS***
+Neutron electric dipole moment (nEDM) experiments require highly
+uniform magnetic fields to preserve spin coherence during long storage
+and precession times. The design and characterization of a prototype
+square shim coil design developed for the TUCAN EDM experiment are
+presented. The shim system consists of a 54-coil cubic array
+(3$\times$3 coils per cube face) driven by a modular 64-channel
+bipolar current supply.  The system is characterized inside the
+magnetically shielded room using three-axis fluxgate scans along a
+central axis.  The system qualitatively reproduces expected field
+profiles for each coil, and for combinations of coils use to generate
+harmonics of the magnetic field.  The coil currents for the harmonics
+are calculated from a COMSOL simulation, and fluxgate scans compare
+well with the expectations of the same simulation.  The results are a
+step toward shimming the magnetic field and imply that the system
+should be able provide the required field homogeneity.  ***NEED
+NUMERICAL RESULTS***
 \end{abstract}
 
 \begin{keyword}
-neutron electric dipole moment \sep magnetic shimming \sep shim coils \sep magnetic field gradients \sep fluxgate magnetometer \sep magnetically shielded room
+neutron electric dipole moment \sep magnetic shimming \sep shim coils
+\sep magnetic field gradients \sep fluxgate magnetometer \sep
+magnetically shielded room
 \end{keyword}
 
 \end{frontmatter}
 
 \section{Introduction}\label{sec1}
 
-The TUCAN EDM experiment aims to measure the neutron electric dipole moment (nEDM) with a statistical uncertainty $\sigma=10^{-27}~e\,\mathrm{cm}$ \cite{bib:npn}. In order to measure the electric dipole moment (EDM) of the neutron $d$, ultracold neutrons (UCNs) are stored in a bottle, and their spin precession frequencies
+The TUCAN EDM experiment aims to measure the neutron electric dipole
+moment (nEDM) with a statistical uncertainty
+$\sigma=10^{-27}~e\,\mathrm{cm}$ \cite{bib:npn}. In order to measure
+the electric dipole moment (EDM) of the neutron $d$, ultracold
+neutrons (UCNs) are stored in a bottle, and their spin precession
+frequencies
 \begin{equation}
 \nu_\pm=\frac{2}{\hbar}(\mu B\pm dE)
 \end{equation}
-are measured in parallel ($+$) and antiparallel ($-$) configurations of applied DC electric $E$ and magnetic $B$ fields.  Here, $\mu$ is the magnetic dipole moment of the neutron.
+are measured in parallel ($+$) and antiparallel ($-$) configurations
+of applied DC electric $E$ and magnetic $B$ fields.  Here, $\mu$ is
+the magnetic dipole moment of the neutron.
 
-Magnetic-field nonuniformities in nEDM experiments can lead to UCN depolarization, and systematic frequency shifts in both the $^{199}$Hg comagnetometer used in nEDM experiments, and the neutron frequency itself~\cite{pendlebury2015,bib:Abel2019,bib:Abel2020CsMag,bib:Abel2022Mapping}.
-Both effects are ultimately related to spin relaxation~\cite{bib:pignol-and-roccia-and-some-other-papers-by-golub-pendlebury-others-with-at-least-one-that-talks-about-neutron-precession}.  The neutron depolarization caused by magnetic inhomogeneity results from dephasing of the neutron spins.  As will be discussed, it results mostly a gravitational effect.  Because the UCN kinetic energies are so small ($\lesssim 300$~neV), neutrons of a lower kinetic energy will preferentially sample the bottom of the precession chamber.  As a result, neutrons of different energies will have spins that precess at different average rates, due to imperfect motional averaging.  This places a requirement on magnetic homogeneity which was the principal requirement for the shim coils to address.
+Magnetic-field nonuniformities in nEDM experiments can lead to UCN
+depolarization, and systematic frequency shifts in both the $^{199}$Hg
+comagnetometer used in nEDM experiments, and the neutron frequency
+itself~\cite{pendlebury2015,bib:Abel2019,bib:Abel2020CsMag,bib:Abel2022Mapping}.
+Both effects are ultimately related to spin
+relaxation~\cite{bib:pignol-and-roccia-and-some-other-papers-by-golub-pendlebury-others-with-at-least-one-that-talks-about-neutron-precession}.
+The neutron depolarization caused by magnetic inhomogeneity results
+from dephasing of the neutron spins.  As will be discussed, it results
+mostly a gravitational effect.  Because the UCN kinetic energies are
+so small ($\lesssim 300$~neV), neutrons of a lower kinetic energy will
+preferentially sample the bottom of the precession chamber.  As a
+result, neutrons of different energies will have spins that precess at
+different average rates, due to imperfect motional averaging.  This
+places a requirement on magnetic homogeneity which was the principal
+requirement for the shim coils to address.
 
-The dephasing results in a reduction in the visibility $\alpha$ of the nuclear magnetic resonance signal, which normally has a free-precession period of about $T=180$~s.  The visibility is the degree of polarization of the neutrons after the NMR sequence has been completed.  The visibility enters directly into the statistical uncertainty $\sigma(d_n)$ of the nEDM experiment
+The dephasing results in a reduction in the visibility $\alpha$ of the
+nuclear magnetic resonance signal, which normally has a
+free-precession period of about $T=180$~s.  The visibility is the
+degree of polarization of the neutrons after the NMR sequence has been
+completed.  The visibility enters directly into the statistical
+uncertainty $\sigma(d_n)$ of the nEDM experiment
 \begin{equation}
 \sigma(d_n)=\frac{\hbar}{2\alpha TE\sqrt{N}},
 \end{equation}
-where $N$ is the total number of neutrons counted at the end of the NMR sequence.  Since the uncertainty is proportional to $T$ and $\alpha$, it is crucially important that spin-coherence be maintained over long periods of time.
+where $N$ is the total number of neutrons counted at the end of the
+NMR sequence.  Since the uncertainty is proportional to $T$ and
+$\alpha$, it is crucially important that spin-coherence be maintained
+over long periods of time.
 
-A large magnetically shielded room (MSR) has been developed for the TUCAN experiment to reduce external magnetic-field fluctuations and provide a magnetically quiet environment for the measurement~\cite{bib:msr_rsi}.
-Within the shielded environment, the expected dominant inhomogeneity is expected to arise from the remanent magnetic fields after degaussing of the MSR.  In the previous best nEDM experiment, this gave rise to a 3~nT inhomogeneity inside the magnetic shield~\cite{bib:find-it}.  We used this level of inhomogeneity as a guideline to design our shim coils, in advance of having constructed the MSR.
+A large magnetically shielded room (MSR) has been developed for the
+TUCAN experiment to reduce external magnetic-field fluctuations and
+provide a magnetically quiet environment for the
+measurement~\cite{bib:msr_rsi}.  Within the shielded environment, the
+expected dominant inhomogeneity is expected to arise from the remanent
+magnetic fields after degaussing of the MSR.  In the previous best
+nEDM experiment, this gave rise to a 3~nT inhomogeneity inside the
+magnetic shield~\cite{bib:find-it}.  We used this level of
+inhomogeneity as a guideline to design our shim coils, in advance of
+having constructed the MSR.
 
-Other uses of the shim coils are to provide various harmonic components of the magnetic field $G_{\ell m}$, which play a role in systematic frequency shifts, mostly of the $^{199}$Hg comagnetometer, which lead to a false EDM signal~\cite{bib:Abel2019-I-think}.  The coils can be used provide specific harmonics, and the resultant effect on the false EDM measured.  The PSI nEDM experiment used this technique up to order $\ell=3$.  Careful mapping of the magnetic field to order $\ell=7$ was crucial to understand and correct gradients~\cite{bib:Abel2022Mapping}.
+Other uses of the shim coils are to provide various harmonic
+components of the magnetic field $G_{\ell m}$, which play a role in
+systematic frequency shifts, mostly of the $^{199}$Hg comagnetometer,
+which lead to a false EDM signal~\cite{bib:Abel2019-I-think}.  The
+coils can be used provide specific harmonics, and the resultant effect
+on the false EDM measured.  The PSI nEDM experiment used this
+technique up to order $\ell=3$.  Careful mapping of the magnetic field
+to order $\ell=7$ was crucial to understand and correct
+gradients~\cite{bib:Abel2022Mapping}.
 
-In dual-cell nEDM experiments, the shim coils can be also used to match the average magnetic field in the upper and lower measurement cells.  This is needed so that the same $B_1$ coil can be used for the NMR techniques needed for the two cells, and have the central frequency be more-or-less the same.  This is particularly challenging for the Ramsey-resonance technique used in these experiments.  Typically, the experiments are operated at a $B_0$ field of 1~$\mu$T, corresponding to a neutron spin precession (Larmor) frequency of about 30~Hz.  The free-precession time of the neutrons approaches 180~s, corresponding to a resonance width of 6 mHz, and the control of the upper/lower cell matching condition must be significantly better than the width ($\lesssim 100~\mu$Hz).
+In dual-cell nEDM experiments, the shim coils can be also used to
+match the average magnetic field in the upper and lower measurement
+cells.  This is needed so that the same $B_1$ coil can be used for the
+NMR techniques needed for the two cells, and have the central
+frequency be more-or-less the same.  This is particularly challenging
+for the Ramsey-resonance technique used in these experiments.
+Typically, the experiments are operated at a $B_0$ field of 1~$\mu$T,
+corresponding to a neutron spin precession (Larmor) frequency of about
+30~Hz.  The free-precession time of the neutrons approaches 180~s,
+corresponding to a resonance width of 6 mHz, and the control of the
+upper/lower cell matching condition must be significantly better than
+the width ($\lesssim 100~\mu$Hz).
 
-In our studies, matrix methods are used to determine current setpoints for a desired magnetic field distribution.
-Previous similar techniques have focused on controlling the magnetic field external to MSRs in active feedback systems, to improve the magnetic shielding factor and overall stability of the shielded field \cite{bib:franke-thesis,bib:rawlik-thesis,bib:shomi-thesis,bib:rawlik-amjphys,bib:abel-epjc-2023,bib:arxiv2601.22960}.  The techniques were adapted to the problem of internal magnetic field shimming.  This is not a new usage of matrix techniques, but the application to internal shimming is not often discussed in detail in the literature.
+In our studies, matrix methods are used to determine current setpoints
+for a desired magnetic field distribution.  Previous similar
+techniques have focused on controlling the magnetic field external to
+MSRs in active feedback systems, to improve the magnetic shielding
+factor and overall stability of the shielded field
+\cite{bib:franke-thesis,bib:rawlik-thesis,bib:shomi-thesis,bib:rawlik-amjphys,bib:abel-epjc-2023,bib:arxiv2601.22960}.
+The techniques were adapted to the problem of internal magnetic field
+shimming.  This is not a new usage of matrix techniques, but the
+application to internal shimming is not often discussed in detail in
+the literature.
 
-This paper outlines the design considerations for the TUCAN EDM shim coil system, design process, prototype design, and initial results from the prototype using a primitive mapper using a fluxgate magnetometer.  While the design originally used free-space calculation techniques, the final results use COMSOL simulations to decide the currents to produce the desired fields, and the fields are compared with the same simulations.
+This paper outlines the design considerations for the TUCAN EDM shim
+coil system, design process, prototype design, and initial results
+from the prototype using a primitive mapper using a fluxgate
+magnetometer.  While the design originally used free-space calculation
+techniques, the final results use COMSOL simulations to decide the
+currents to produce the desired fields, and the fields are compared
+with the same simulations.
 
 
 \section{Design requirements}\label{sec2}
 
-A primary purpose of the shim coils is to preserve the visibility $\alpha$ of the neutron spin over long free-precession times.  The two principal limitations on the neutron spin-relaxation are gravitationally enhanced depolarization and intrinsic depolarization~\cite{bib:Abel2019}. Gravitationally enhanced depolarization arises because neutrons with different kinetic energies sample different heights in the axially symmetric measurement cell.  In the presence of a vertical magnetic gradient, different mean heights precess at different rates. The process is reversible, in the sense that a spin-echo sequence can restore the visibility.  Intrinsic depolarization is an irreversible dephasing within an energy group; neutrons of the same energy, moving within an inhomogeneous magnetic field, precess at different rates because they follow different trajectories within the cell.
+A primary purpose of the shim coils is to preserve the visibility
+$\alpha$ of the neutron spin over long free-precession times.  The two
+principal limitations on the neutron spin-relaxation are
+gravitationally enhanced depolarization and intrinsic
+depolarization~\cite{bib:Abel2019}. Gravitationally enhanced
+depolarization arises because neutrons with different kinetic energies
+sample different heights in the axially symmetric measurement cell.
+In the presence of a vertical magnetic gradient, different mean
+heights precess at different rates. The process is reversible, in the
+sense that a spin-echo sequence can restore the visibility.  Intrinsic
+depolarization is an irreversible dephasing within an energy group;
+neutrons of the same energy, moving within an inhomogeneous magnetic
+field, precess at different rates because they follow different
+trajectories within the cell.
 
-In a first-order gradient model~\cite{bib:Abel2019}, gravitationally enhanced depolarization results in the following dependence of visibility with free-precession time $T$
+In a first-order gradient model~\cite{bib:Abel2019}, gravitationally
+enhanced depolarization results in the following dependence of
+visibility with free-precession time $T$
 \begin{equation}
   \alpha_{\rm grav}=\alpha_0-\frac{1}{2}\gamma_n^2 G_{1,0}^2 {\rm Var}[\bar{z}] T^2,
   \label{eq:alphagrav}
 \end{equation}
-where $\gamma_n$ is the neutron gyromagnetic ratio, $G_{1,0}$ is the first-order vertical gradient of $B_z$ in the harmonic-gradient description used for nEDM magnetic-field analyses \cite{bib:Abel2019,bib:Abel2022Mapping}, and ${\rm Var}[\bar{z}]$ is the variance of the average $z$ positions for each neutron energy. Intrinsic depolarization within an energy group can be described using the ``intuitive model'' of Ref.~\cite{bib:earliercitedworkinAbel2019,bib:Abel2019},
+where $\gamma_n$ is the neutron gyromagnetic ratio, $G_{1,0}$ is the
+first-order vertical gradient of $B_z$ in the harmonic-gradient
+description used for nEDM magnetic-field analyses
+\cite{bib:Abel2019,bib:Abel2022Mapping}, and ${\rm Var}[\bar{z}]$ is
+the variance of the average $z$ positions for each neutron
+energy. Intrinsic depolarization within an energy group can be
+described using the ``intuitive model'' of
+Ref.~\cite{bib:earliercitedworkinAbel2019,bib:Abel2019},
 \begin{equation}
   \frac{1}{T_{2,\rm mag}}=
   \frac{8R^3\gamma_n^2}{9\pi v}\left(G_{1,-1}^2+G_{1,1}^2\right)
@@ -173,15 +281,37 @@ with the corresponding visibility
   \alpha_{\rm mag}=\alpha_0\exp\left(-\frac{T}{T_{2,\rm mag}}\right).
   \label{eq:alphamag}
 \end{equation}
-In Eq.~(\ref{eq:intrinsic}), $T_{2,\rm mag}$ is the magnetic contribution to the transverse spin-relaxation time, $v$ is the neutron speed, $R$ is the cell radius, and $G_{1,1}$ and $G_{1,-1}$ are the first-order transverse gradients.  The quantity $\mathcal{H}$ is the effective height, defined as the maximum height attained by neutrons of a given energy \cite{bib:afach-prd-92-052008-2015}.  If the neutron kinetic energy is $E$, its maximum height in free space is $\epsilon=\frac{E}{mg}$.  For neutrons trapped within the measurement cell of height $H$, the effective height $\mathcal{H}$ is the lesser of $H$ and $\epsilon$.
+In Eq.~(\ref{eq:intrinsic}), $T_{2,\rm mag}$ is the magnetic
+contribution to the transverse spin-relaxation time, $v$ is the
+neutron speed, $R$ is the cell radius, and $G_{1,1}$ and $G_{1,-1}$
+are the first-order transverse gradients.  The quantity $\mathcal{H}$
+is the effective height, defined as the maximum height attained by
+neutrons of a given energy \cite{bib:afach-prd-92-052008-2015}.  If
+the neutron kinetic energy is $E$, its maximum height in free space is
+$\epsilon=\frac{E}{mg}$.  For neutrons trapped within the measurement
+cell of height $H$, the effective height $\mathcal{H}$ is the lesser
+of $H$ and $\epsilon$.
 
-Both Eqs. (\ref{eq:alphagrav}) and (\ref{eq:alphamag}) were compared with data on neutron visibility from PSI in Ref.~\cite{bib:Abel2019} and found to agree well with data.  Eq.~(\ref{eq:alphagrav}) was found to be valid in a more limited range of $G_{1,0}\lesssim 30$~pT/cm.
+Both Eqs. (\ref{eq:alphagrav}) and (\ref{eq:alphamag}) were compared
+with data on neutron visibility from PSI in Ref.~\cite{bib:Abel2019}
+and found to agree well with data.  Eq.~(\ref{eq:alphagrav}) was found
+to be valid in a more limited range of $G_{1,0}\lesssim 30$~pT/cm.
 
-In Fig.~\ref{fig:g10_visibility}, we graph both Eqs.~(\ref{eq:alphagrav}) and (\ref{eq:alphamag}) using parameters relevant to the TUCAN EDM experiment.  This shows that gravitationally enhanced depolarization (via $G_{1,0}$) tends to limit the visibility $\alpha$ more stringently, for vertical gradients.  The parameters used in making the graph are...???
+In Fig.~\ref{fig:g10_visibility}, we graph both
+Eqs.~(\ref{eq:alphagrav}) and (\ref{eq:alphamag}) using parameters
+relevant to the TUCAN EDM experiment.  This shows that gravitationally
+enhanced depolarization (via $G_{1,0}$) tends to limit the visibility
+$\alpha$ more stringently, for vertical gradients.  The parameters
+used in making the graph are...???
 \begin{figure}[tbp]
   \centering
   \includegraphics[width=0.90\linewidth]{Fig1Gravitational2.png}
-  \caption{Calculated neutron visibility $\alpha$ after $T=180$~s as a function of the vertical gradient $G_{1,0}$, comparing gravitationally enhanced depolarization and intrinsic depolarization. The curves are obtained from the first-order gradient model using Eqs.~(\ref{eq:alphagrav}) and (\ref{eq:alphamag}) with parameters...???}
+  \caption{Calculated neutron visibility $\alpha$ after $T=180$~s as a
+    function of the vertical gradient $G_{1,0}$, comparing
+    gravitationally enhanced depolarization and intrinsic
+    depolarization. The curves are obtained from the first-order
+    gradient model using Eqs.~(\ref{eq:alphagrav}) and
+    (\ref{eq:alphamag}) with parameters...???}
   \label{fig:g10_visibility}
 \end{figure}
 
@@ -196,7 +326,12 @@ This corresponds to a visibility at $T=180$~s of
   \label{eq:alphagoal}
 \end{equation}
 
-To estimate the corresponding first-order gradient requirements for TUCAN, we used the requirement in Eq. (\ref{eq:alphagoal}) to place constraints on $G_{1,0}$, $G_{1,-1}$, and $G_{1,1}$ via Eqs. (\ref{eq:alphagrav}) and (\ref{eq:alphamag}), using the planned cell dimensions $R=0.30$~m and $H=0.161$~m.  The results of the calculation are shown in Table~\ref{tab:ggoal}
+To estimate the corresponding first-order gradient requirements for
+TUCAN, we used the requirement in Eq. (\ref{eq:alphagoal}) to place
+constraints on $G_{1,0}$, $G_{1,-1}$, and $G_{1,1}$ via
+Eqs. (\ref{eq:alphagrav}) and (\ref{eq:alphamag}), using the planned
+cell dimensions $R=0.30$~m and $H=0.161$~m.  The results of the
+calculation are shown in Table~\ref{tab:ggoal}
 \begin{table}
   \begin{center}
     \begin{tabular}{ccl}
@@ -205,15 +340,24 @@ To estimate the corresponding first-order gradient requirements for TUCAN, we us
       $\sqrt{G_{1,1}^2+G_{1,-1}^2}$ & $<$ 10.8 & intrinsic\\
       $G_{1,0}$ & $<$ 8.7 & gravitationally enhanced
     \end{tabular}
-    \caption{Goals for first-order gradients based on requirement of maintaining magnetic inhomogeneity contribution to neutron visibility $\alpha>0.982\times\alpha_0$.\label{tab:ggoal}}
+    \caption{Goals for first-order gradients based on requirement of
+      maintaining magnetic inhomogeneity contribution to neutron
+      visibility $\alpha>0.982\times\alpha_0$.\label{tab:ggoal}}
   \end{center}
 \end{table}
 
-Going beyond first order in magnetic gradients, we estimated constraints on a general field $B_z(x,y,z)$ using two different measures of inhomogeneity.  One measure was
+Going beyond first order in magnetic gradients, we estimated
+constraints on a general field $B_z(x,y,z)$ using two different
+measures of inhomogeneity.  One measure was
 \begin{equation}
   \Delta B_z = B_z^{\rm max}-B_z^{\rm min},
 \end{equation}
-where the maximum $B_z^{\rm max}$ and minimum $B_z^{\rm min}$ are the extrema found anywhere within the measurement cell.  We alternatively used the standard deviation $\sigma(B_z)$ of the values of $B_z$ within the measurement cell.  In the presence of a purely vertical first-order gradient $G_{1,0}$, the quantities $\Delta B_z$ and $\sigma(B_z)$ can be calculated analytically to be
+where the maximum $B_z^{\rm max}$ and minimum $B_z^{\rm min}$ are the
+extrema found anywhere within the measurement cell.  We alternatively
+used the standard deviation $\sigma(B_z)$ of the values of $B_z$
+within the measurement cell.  In the presence of a purely vertical
+first-order gradient $G_{1,0}$, the quantities $\Delta B_z$ and
+$\sigma(B_z)$ can be calculated analytically to be
 \begin{equation}
   \Delta B_z = G_{1,0}H,
   \label{eq:dbz}
@@ -223,33 +367,99 @@ and
   \sigma(B_z)=\frac{G_{1,0}H}{\sqrt{12}}.
   \label{eq:sbz}
 \end{equation}
-We used Eqs.~(\ref{eq:dbz}) and (\ref{eq:sbz}) to estimates constraints on the more general $\Delta B_z$ and $\sigma(B_z)$ using the constraint on $G_{1,0}$ described in Table~\ref{tab:ggoal}.  This gives the requirements
+We used Eqs.~(\ref{eq:dbz}) and (\ref{eq:sbz}) to estimates
+constraints on the more general $\Delta B_z$ and $\sigma(B_z)$ using
+the constraint on $G_{1,0}$ described in Table~\ref{tab:ggoal}.  This
+gives the requirements
 \begin{equation}
   \Delta B_z<140~{\rm pT}
   \qquad\text{or}\qquad
   \sigma(B_z)<40~{\rm pT}.
   \label{eq:bzmetrics}
 \end{equation}
-A similar analysis can be conducted for the first-order horizontal gradients of $B_z$, $G_{1,1}$ and $G_{1,-1}$, determining similar results as Eqs.~(\ref{eq:dbz}) and (\ref{eq:sbz}).  The resultant constraint turns out to be weaker, so we retained the constraints in Eq.~(\ref{eq:bzmetrics}).
+A similar analysis can be conducted for the first-order horizontal
+gradients of $B_z$, $G_{1,1}$ and $G_{1,-1}$, determining similar
+results as Eqs.~(\ref{eq:dbz}) and (\ref{eq:sbz}).  The resultant
+constraint turns out to be weaker, so we retained the constraints in
+Eq.~(\ref{eq:bzmetrics}).
 
-A further requirement comes from transverse magnetic fields. To lowest order, the difference between the $^{199}$Hg comagnetometer frequency, which senses $B_z$, and the neutron frequency, which senses $|\vec{B}|$, differ by a factor 
-$(1+\frac{\langle B_T^2\rangle}{2B_0^2})$,
-where $B_0$ is the nominal holding field, and
+A further requirement comes from transverse magnetic fields. To lowest
+order, the difference between the $^{199}$Hg comagnetometer frequency,
+which senses $B_z$, and the neutron frequency, which senses
+$|\vec{B}|$, differ by a factor $(1+\frac{\langle
+  B_T^2\rangle}{2B_0^2})$, where $B_0$ is the nominal holding field,
+and
 \begin{equation}
   \langle B_T^2\rangle=\langle(B_x-\langle B_x\rangle)^2+(B_y-\langle B_y\rangle)^2\rangle
 \end{equation}
-where the averages are over the measurement cell volume.  A requirement may be placed on $\langle B_T^2\rangle$ to ensure that there is not a systematic difference between the comagnetometer and neutron measured frequencies.  In the PSI experiment, $\langle B_T^2\rangle < 1$~nT$^2$ was typically achieved.
-As noted in Ref.~\cite{bib:Abel2019} CHECK THAT IT SAYS THIS, requirements on transverse fields are usually satisfied once the $B_z$ homogeneity is sufficiently good.  Our studies confirmed this and Eq.~(\ref{eq:bzmetrics}) was found to be sufficient.
+where the averages are over the measurement cell volume.  A
+requirement may be placed on $\langle B_T^2\rangle$ to ensure that
+there is not a systematic difference between the comagnetometer and
+neutron measured frequencies.  In the PSI experiment, $\langle
+B_T^2\rangle < 1$~nT$^2$ was typically achieved.  As noted in
+Ref.~\cite{bib:Abel2019} CHECK THAT IT SAYS THIS, requirements on
+transverse fields are usually satisfied once the $B_z$ homogeneity is
+sufficiently good.  Our studies confirmed this and
+Eq.~(\ref{eq:bzmetrics}) was found to be sufficient.
 
 \section{Design studies}\label{sec:designstudies}
 
-To design the shim coil system, we needed to make an educated guess on the likely inhomogeneity to be experienced prior to shimming.  We assumed a 3 nT (max minus min) inhomogeneity within the central 1~m$^3$ volume surrounding the nEDM measurement cells.  This strategy was based on similar studies performed in [Wolfgang K.'s MSc].  In
-that case, the magnetic shielding of old ILL nEDM experiment, then at PSI, was known to possess a native 3 nT/m gradient [find citation from Wolfgang K.'s MSc], and this was used
-as a benchmark.
+To design the shim coil system, we needed to make an educated guess on
+the likely inhomogeneity to be experienced prior to shimming.  We
+assumed a 3 nT (max minus min) inhomogeneity within the central
+1~m$^3$ volume surrounding the nEDM measurement cells.  This strategy
+was based on similar studies performed in [Wolfgang K.'s MSc].  In
+that case, the magnetic shielding of old ILL nEDM experiment, then at
+PSI, was known to possess a native 3 nT/m gradient [find citation from
+  Wolfgang K.'s MSc], and this was used as a benchmark.
 
-Now that the MSR has been constructed, we expect the residual field inhomogeneity within the central m$^3$ to fall within the 3 nT range [Derek's MSR paper], with a significant probability of improvement with more careful degaussing.  In the new n2EDM shield, the PSI collaboration also demonstrated inhomogeneities of XX pT in the XX m$^3$ region [cite first paper].  The homogeneity improved to XX pt in XX m$^3$ after more detailed degaussing studies [cite Segarra paper] and the degaussing time was substantially reduced.  The homogeneity in the PanEDM experiment shield was demonstrated to be XX pT/m [find citation].  Other similarly sized MSRs have demonstrated even better homogeneity of XX pT/m [cite Fierlinger plus Chinese people for Harbin room], [Fierlinger new shield].
+Now that the MSR has been constructed, we expect the residual field
+inhomogeneity within the central m$^3$ to fall within the 3 nT range
+[Derek's MSR paper], with a significant probability of improvement
+with more careful degaussing.  In the new n2EDM shield, the PSI
+collaboration also demonstrated inhomogeneities of XX pT in the XX
+m$^3$ region [cite first paper].  The homogeneity improved to XX pt in
+XX m$^3$ after more detailed degaussing studies [cite Segarra paper]
+and the degaussing time was substantially reduced.  The homogeneity in
+the PanEDM experiment shield was demonstrated to be XX pT/m [find
+  citation].  Other similarly sized MSRs have demonstrated even better
+homogeneity of XX pT/m [cite Fierlinger plus Chinese people for Harbin
+  room], [Fierlinger new shield].
 
-A software tool [\url{https://github.com/jmartin1454/squares}] was written to study the ability of different shim coil arrangements to correct arbitrary fields within the central region.  In the beginning of the design studies, coils in the simulation would be wound as regular square coils on the six surfaces of a cube (Fig.~\ref{fig:3x3}).  The magnetic field produced by the coils would be sensed at test points within the central region of interest.  The design tool performs the following steps in the calculation:
+\subsection{Matrix methods}\label{sec:matrixmethods}
+
+A software tool [\url{https://github.com/jmartin1454/squares}] was
+written to study the ability of different shim coil arrangements to
+correct arbitrary fields within the central region.  In the beginning
+of the design studies, coils in the simulation would be wound as
+regular square coils on the six surfaces of a cube.  An example
+geometry is shown in Fig.~\ref{fig:3x3}.  The magnetic field produced
+by the coils would be sensed at test points within the central region
+of interest.  Initial studies were conducted in free space for ease of
+calculation.  In Section~\ref{sec:where}, modifications to the code to
+use COMSOL-calculated fields are discussed.
+
+I is straight
+\begin{equation}
+  B = MI,
+  \label{eq:forward_matrix}
+\end{equation}
+where $I$ is the vector of coil currents, $B$ is the vector of magnetic-field values evaluated in the ROI, and $M$ is the response matrix. The matrix elements $M_{ij}$ give the field produced at evaluation point or sensor axis $i$ per unit current in coil $j$. In practice, $M$ can be obtained either from free-space Biot--Savart calculations or from magnetostatic simulations that include the surrounding geometry.
+
+Given a target field vector $B_{\mathrm{target}}$, the required coil-current setpoints are obtained from the least-squares solution
+\begin{equation}
+  I_{\mathrm{set}} = M^{+} B_{\mathrm{target}},
+  \label{eq:setpoints}
+\end{equation}
+where $M^{+}$ is the Moore--Penrose pseudoinverse. In the present work, the pseudoinverse is computed using a singular value decomposition.
+
+For the square-coil cube, the response matrix contains a singular ``zero mode'' associated with a current pattern that produces nearly zero magnetic field in the ROI. If this mode is retained, the inversion becomes numerically unstable. We therefore remove the smallest singular value and its associated singular vector when constructing the pseudoinverse. The resulting truncated pseudoinverse provides stable current setpoints while preserving the physically relevant field modes.
+
+The target field $B_{\mathrm{target}}$ may represent either a correction field used to reduce inhomogeneity metrics such as $\Delta B_z$ and $\sigma(B_z)$, or a specific harmonic mode $G_{\ell,m}$ used for systematic studies. Once the set currents are obtained, the achieved field is evaluated using the same ROI metrics and compared with the mapping measurements described in Section~\ref{sec7}.
+
+
+  The
+design tool performs the following steps in the calculation:
 \begin{enumerate}
 \item sets up an array of coils inscribed on a cube (typ. (2~m)$^3$)
 \item sets up an array of magnetic sense points distributed throughout a smaller
@@ -285,25 +495,6 @@ The performance of this current supply was characterized separately in Ref.~\cit
 \label{fig:current_supply}
 \end{figure}
 
-\section{Matrix methods}\label{sec:matrixmethods}
-
-The shim-coil currents are determined using a matrix-based method. For a fixed coil geometry, the magnetic field in the ROI is linear in the coil currents, so the field values at a set of evaluation points can be written as
-\begin{equation}
-  B = MI,
-  \label{eq:forward_matrix}
-\end{equation}
-where $I$ is the vector of coil currents, $B$ is the vector of magnetic-field values evaluated in the ROI, and $M$ is the response matrix. The matrix elements $M_{ij}$ give the field produced at evaluation point or sensor axis $i$ per unit current in coil $j$. In practice, $M$ can be obtained either from free-space Biot--Savart calculations or from magnetostatic simulations that include the surrounding geometry.
-
-Given a target field vector $B_{\mathrm{target}}$, the required coil-current setpoints are obtained from the least-squares solution
-\begin{equation}
-  I_{\mathrm{set}} = M^{+} B_{\mathrm{target}},
-  \label{eq:setpoints}
-\end{equation}
-where $M^{+}$ is the Moore--Penrose pseudoinverse. In the present work, the pseudoinverse is computed using a singular value decomposition.
-
-For the square-coil cube, the response matrix contains a singular ``zero mode'' associated with a current pattern that produces nearly zero magnetic field in the ROI. If this mode is retained, the inversion becomes numerically unstable. We therefore remove the smallest singular value and its associated singular vector when constructing the pseudoinverse. The resulting truncated pseudoinverse provides stable current setpoints while preserving the physically relevant field modes.
-
-The target field $B_{\mathrm{target}}$ may represent either a correction field used to reduce inhomogeneity metrics such as $\Delta B_z$ and $\sigma(B_z)$, or a specific harmonic mode $G_{\ell,m}$ used for systematic studies. Once the set currents are obtained, the achieved field is evaluated using the same ROI metrics and compared with the mapping measurements described in Section~\ref{sec7}.
 \section{Construction and installation}\label{sec6}
 
 \subsection{Panel fabrication and coil winding}
