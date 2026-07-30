@@ -459,7 +459,7 @@ at~\url{https://github.com/jmartin1454/Pis}.
 
 We describe the details of some of the methods implemented in the
 software, with a focus on the matrix algebra.  We then provide sample
-results and describe a path forward to complete the basic design.
+results from this stage of the design.
 
 \subsection{Geometry}
 
@@ -478,7 +478,7 @@ Fig.~\ref{fig:geometry}.
 A cube defines the winding surface of the square coils.  The number of
 square coils on each surface is selected by defining the integer
 number of coils desired in each dimension.  In
-Fig.~\ref{fig:geometry}, it is a $3\times 3\times 3$ ``coil cube''.
+Fig.~\ref{fig:geometry}, it is a $3\times 3$ ``coil cube''.
 
 Three-axis sensors (which we can imagine as fluxgates) are placed
 within a region of interest internal to the coil cube.  In
@@ -510,7 +510,7 @@ contributions proportional to the current in each coil via
 \end{equation}
 The matrix elements $M_{ij}$ are geometrical factors calculable by the
 Biot-Savart Law or the formula of the magnetic field due to a
-straight-line segment as discussed earlier.
+straight-line segment.
 
 The equation may be written in a matrix notation as
 \begin{equation}
@@ -581,7 +581,8 @@ While this calculation works in principle, in practice it can have
 problems.  For coils with overlapping currents inscribed on a cube,
 there is always one mode of applying the same magnitude current to all
 $c$ coils, which gives rise to exactly zero net current and hence
-$\vec{B}=0$ in all space.  This mode appears in the singular value decomposition as
+$\vec{B}=0$ in all space.  This mode appears in the singular value
+decomposition as
 \begin{equation}
   S_{cc}=0,
 \end{equation}
@@ -687,102 +688,204 @@ the decision whether or not to cut the zero mode (or in the case of
 realistic current paths, the slightly non-zero mode) can then be made
 by the user, when more realistic coil systems are eventually studied.
 
+\subsection{Quantitative comparison to requirements}
 
+As discussed in Ref.~\cite{bib:jeffnote}, and as mentioned in
+Section~\ref{sec:req}, the chief requirements are:
+\begin{itemize}
+\item $\Delta B_z\equiv B_z^{\rm max}-B_z^{\rm min}<140~{\rm pT}$,
+\item $\sigma(B_z)<40~{\rm pT}$, and
+\item $\langle B_T^2\rangle<0.1$~nT$^2$.
+\end{itemize}
 
-\subsection{Matrix methods}\label{sec:matrixmethods}
+One difficulty encountered in deciding whether a given design meets
+these requirements is how to normalize the anticipated
+inhomogeneities.  Since we do not know the actual field distribution
+expected in the MSR, we can only guess at the extent of the
+inhomogeneity that might need to be dealt with.
 
+The strategy pursued here is to normalize our ignorance of the
+homogeneity to the scale of inhomogeneity experienced in other
+magnetically shielded enclosures.  A similar strategy has been pursued
+in Ref.~\cite{bib:wkthesis}.  In that case, the magnetic shielding of
+PSI, which is known to possess a native 3~nT/m gradient, was used as a
+benchmark.  This was used to motivate placing a requirement on
+randomly generated fields within a $1\times 1\times 1$~m$^3$ region of
+interest fall within a range of 3~nT.  The alkali atom magnetometers
+studied in Ref.~\cite{bib:wkthesis} were then studied in relation to
+their performance in these fields, and their ability to extract the
+relevant vertical gradients, which contribute to false EDM effects.
+For example, a genetic algorithm was used to decide the optimal
+magnetometer positions to best constrain the $G_{\ell,0}$.
 
-A software tool [\url{https://github.com/jmartin1454/squares}] was
-written to study the ability of different shim coil arrangements to
-correct arbitrary fields within the central region.  In the beginning
-of the design studies, coils in the simulation would be wound as
-regular square coils on the six surfaces of a cube.  An example
-geometry is shown in Fig.~\ref{fig:3x3}.  The magnetic field produced
-by the coils would be sensed at test points within the central region
-of interest.  Initial studies were conducted in free space for ease of
-calculation.  In Section~\ref{sec:where}, modifications to the code to
-use COMSOL-calculated fields are discussed.
+A key finding in this study was that $\ell>3$ did not contribute
+strongly to the false EDM.  This is, in part, because of the
+normalization volume and range of magnetic fields permitted.
 
-An example of the geometry constructed by the code is presented in
-Fig.~\ref{fig:geometry}.
-\begin{figure}
-\begin{center}
-  \includegraphics[width=\textwidth]{example-geometry.png}
-  \caption{Example geometry.  Nine square coils are wound on each of
-    the six faces of a 1~m cube (54 coils in total), represented by
-    the colorful squares.  Twenty-seven fluxgate sensors (the red
-    dots) are placed within a smaller 0.5~m cube, representing a
-    volume of interest.\label{fig:geometry}}
-\end{center}
-\end{figure}
-A cube defines the winding surface of the square coils.  The number of
-square coils on each surface is selected by defining the integer
-number of coils desired in each dimension.  In
-Fig.~\ref{fig:geometry}, it is a $3\times 3\times 3$ ``coil cube''.
+In our study, a similar strategy is adopted.  The maximum and minimum
+values of the target field ($B_z$) in a $1\times 1\times 1$~m$^3$ cube
+are determined.  The range of $B_z$ (maximum minus minimum) is then
+required to be 3~nT, as in~\cite{bib:wkthesis}, and all $B_z$ values
+within the volume renormalized accordingly.  This field is then
+decided to be ``reasonable'' as a possible inhomogeneity that might be
+encountered in the eventual EDM experiment.
 
-Three-axis sensors (which we can imagine as fluxgates) are placed
-within a region of interest internal to the coil cube.  In
-Fig.~\ref{fig:geometry}, 27~sensors are represented by the red dots
-distributed within the smaller inner cube.  Each sensor has three axes
-which measure $B_x$, $B_y$, and $B_z$.  So in total there are 81
-sensor axes in this example.
+Within this normalization volume are placed the two (upper and lower)
+EDM measurement cells.  The cells are assumed each to be 16~cm in
+height and 30~cm in radius.  The cells are separated by an 8~cm
+central electrode.  Statistics on the target $B_z$ field (prior to
+correction) and the residual $B_z$ (corrected by the coils) are
+calculated within the cell volumes.
 
-\subsection{Matrix methods}\label{sec:matrixmethods}
+\begin{table}
+  \begin{center}
+    \begin{tabular}{ccccccc}
+      $(\ell,m)$ & \multicolumn{2}{c}{$\Delta B_z$} & \multicolumn{2}{c}{$\sigma(B_z)$} & \multicolumn{2}{c}{$\langle B_T^2\rangle$}\\
+      or &  \multicolumn{2}{c}{(pT)} & \multicolumn{2}{c}{(pT)} & \multicolumn{2}{c}{(nT$^2$)} \\\cline{2-7}
+      dipole & before & after & before & after & before & after \\
+      & correction & correction & correction & correction & correction & correction \\\hline
+      (1,0) & 455 &  6 & 140 & 0.6 & 0.26 & $3\times 10^{-6}$ \\
+      (1,1) &1790 &106 & 458 & 9 & 0.36 & $2\times 10^{-4}$ \\
+      (2,0) & 500 & 58 & 106 & 7 & 0.04 & $4\times 10^{-4}$ \\
+      (2,1) & 700 & 16 & 120 & 2 & 0.02 & $5\times 10^{-5}$ \\
+      (2,2) &1065 &116 & 230 &12 & 0.17 & $4\times 10^{-4}$ \\
+      dipole 1 &1140&$\boxed{232}$ & 244 &14 & 0.53 & $7\times 10^{-4}$ \\
+      dipole 2 upper&500& 20 & 109 & 3 & 0.47 & $3\times 10^{-5}$ \\
+      dipole 2 lower&220& 17 &  50 & 3 & 0.47 & $3\times 10^{-5}$ \\
+      dipole 3 upper&870& 37 & 187 & 8 & 0.16 & $1\times 10^{-4}$ \\
+      dipole 3 lower&400& 41 &  87 & 4 & 0.16 & $1\times 10^{-4}$ \\
+      (3,1) & 200 & 61 &  31 & 6 & 0.004& $1\times 10^{-4}$ \\
+      (3,3) & 340 & 65 &  61 & 5 & 0.02 & $2\times 10^{-4}$ \\
+      (4,2) & 123 & 59 &  14 & 6 & 0.0005&$2\times 10^{-4}$ \\
+      \hline
+      goal & & 140 & & 40 & & 0.1 \\
+    \end{tabular}
+    \caption{Trials using the $3\times 3$ coil/fluxgate system to
+      counteract various applied fields.  The only entry not meeting
+      requirements has been highlighted.\label{tab:trials}}
+  \end{center}
+\end{table}
 
+While Ref.~\cite{bib:wkthesis} considered a broad range of possible
+field configurations, we focused on a few different orders of
+$G_{\ell,m}$ and some dipole fields.  Table~\ref{tab:trials} details
+the various target field configurations that that were studied.
 
+In general, vertical gradients $(\ell,m=0)$ are well-compensated
+compared to gradient possessing large variations in $B_z$ in the
+transverse directions $(\ell,m=\ell)$.  This is in part because the
+cells are wider than they are tall.  It seems also that the gradient
+suppression is not as good generally for these modes for this design.
+Nonetheless, all $(\ell,m)$ modes meet the requirements.
 
-\begin{equation}
-  B = MI,
-  \label{eq:forward_matrix}
-\end{equation}
-where $I$ is the vector of coil currents, $B$ is the vector of magnetic-field values evaluated in the ROI, and $M$ is the response matrix. The matrix elements $M_{ij}$ give the field produced at evaluation point or sensor axis $i$ per unit current in coil $j$. In practice, $M$ can be obtained either from free-space Biot--Savart calculations or from magnetostatic simulations that include the surrounding geometry.
+The dipole fields considered were as follows:
+\begin{itemize}
+  \item Dipole 1 represents the dipole location and moment presented
+    in Eqs.~(\ref{eq:dipoleposition}) and (\ref{eq:dipolemoment}),
+    respectively, and with fields as shown in Fig.~\ref{fig:dipole}.
+  \item Dipole 2 has the same vector moment, pointing in the $+z$
+    direction, but its position has been moved to the ceiling center
+    at $(x_d,y_d,z_d)=(0,0,1.2)$~m.  In this position, the dipole has
+    a different effect on the upper and lower cells and we list their
+    results separately in Table~\ref{tab:trials}.  (However, their
+    $B_T$ results are presented as averages of the upper and lower
+    cells.)
+  \item Dipole 3 has the same position as dipole 2, but the moment has
+    been oriented along the $+x$ direction $\vec{p}=(1,0,0)$~Am$^2$.
+\end{itemize}
 
-Given a target field vector $B_{\mathrm{target}}$, the required coil-current setpoints are obtained from the least-squares solution
-\begin{equation}
-  I_{\mathrm{set}} = M^{+} B_{\mathrm{target}},
-  \label{eq:setpoints}
-\end{equation}
-where $M^{+}$ is the Moore--Penrose pseudoinverse. In the present work, the pseudoinverse is computed using a singular value decomposition.
+As shown in Fig.~\ref{fig:dipole}, dipole 1 generates a strong and
+varying $\partial B_z/\partial x$ across the cells.  In this way it is
+quite similar to the $G_{1,1}$ multipole.  This was the only
+configuration considered that did not meet the $\Delta B_z$
+requirement, although it did meet the $\sigma(B_z)$ requirement.
 
-For the square-coil cube, the response matrix contains a singular ``zero mode'' associated with a current pattern that produces nearly zero magnetic field in the ROI. If this mode is retained, the inversion becomes numerically unstable. We therefore remove the smallest singular value and its associated singular vector when constructing the pseudoinverse. The resulting truncated pseudoinverse provides stable current setpoints while preserving the physically relevant field modes.
+To test whether this failure was due to the dipole nature of the
+field, or the strong $\partial B_z/\partial x$ field generated by it,
+the dipole 2 and dipole 3 configurations were created.  Dipole 2 gives
+a similarly strong $\partial B_z/\partial z$ field, which differs in
+the upper and lower cells.  This is easily corrected.  Dipole 3 gives
+a relatively strong $\partial B_z/\partial x$.  By symmetry, its
+behavior is the same as the $B_x(0,0,z)$-dependence exhibited by
+dipole 1.  Interestingly, despite having a relatively strong $\partial
+B_z/\partial x$, it is corrected sufficiently well to meet the
+requirement.
 
-The target field $B_{\mathrm{target}}$ may represent either a correction field used to reduce inhomogeneity metrics such as $\Delta B_z$ and $\sigma(B_z)$, or a specific harmonic mode $G_{\ell,m}$ used for systematic studies. Once the set currents are obtained, the achieved field is evaluated using the same ROI metrics and compared with the mapping measurements described in Section~\ref{sec7}.
+The worst result seen in Table~1, indicated by the boxed value, seems
+to be driven in part by a particularly pathological $\partial
+B_z/\partial x$.  While it does not meet the requirement set in
+Ref.~\cite{bib:jeffnote} that $\Delta B_z<140$~pT, recall that this
+requirement was set based on a $G_{1,0}$, {\it i.e.} a $\partial
+B_z/\partial z$ vertical gradient, and that the requirements on
+horizontal gradients were generally much looser.  In the end, we
+suggest that the $3\times 3$ array is likely sufficient to meet the
+neutron $T_2$ requirements, for the geometry factors considered here.
 
-
-  The
-design tool performs the following steps in the calculation:
-\begin{enumerate}
-\item sets up an array of coils inscribed on a cube (typ. (2~m)$^3$)
-\item sets up an array of magnetic sense points distributed throughout a smaller
-  cube (typ. (1~m)$^3$)
-\item calculates the matrix $M$ in $B=MI$ by setting each coil current
-  $I$ in turn and measuring $B$ at each sensor position.
-\item inverts the matrix, carefully excising the zero mode.
-\item selects a target field $B_{\rm target}$
-and evaluates it at the fluxgate positions.
-\item calculates $I_{\rm set}=M^{-1}B_{\rm target}$ and sets those
-  currents on the coils
-\item makes graphs of the resultant true field produced by the coils
-\item perform statistics on the resultant residual magnetic field (normally in the nEDM measurement cells)
-\end{enumerate}
+Finally, the $\langle B_T^2\rangle$ are also always met.  The response
+to pure transverse gradient fields $G_{\ell,\pm(\ell+1)}$ was not
+studied yet, in part due to the normalization scheme being focused on
+the vertical field $B_z$.  But the reduction for pure transverse
+gradients could be expected to be similar in magnitude to the
+suppression of transverse gradients affecting $B_z$.  For example the
+suppression of $G_{1,2}$ might be similar in scale to the suppression
+of $G_{1,1}$ which generates transverse gradient $\partial
+B_z/\partial x$, but not as large as the suppression of $G_{1,0}$,
+which generates $\partial B_z/\partial z$.  For dipoles 2 and 3, it
+should also be noted that the $\langle B_T^2\rangle$ was not
+calculated separately for each cell, rather the results in the table
+are averaged over the two cells.
 
 \section{Design concepts}\label{sec3}
 
+?
 
 \subsection{Current supply for shim-coil operation}
 
-The square shim-coil system requires independent current control for each coil, since each target field pattern is produced by applying a calculated set of currents to the full coil array. For the prototype system, the required currents are modest, typically at the level of a few tens of milliamperes. However, stability and reproducibility are important because the magnetic field produced by each coil is proportional to the applied current. Therefore, current drifts would directly appear as magnetic-field drifts during mapping or shimming measurements.
+The square shim-coil system requires independent current control for
+each coil, since each target field pattern is produced by applying a
+calculated set of currents to the full coil array. For the prototype
+system, the required currents are modest, typically at the level of a
+few tens of milliamperes. However, stability and reproducibility are
+important because the magnetic field produced by each coil is
+proportional to the applied current. Therefore, current drifts would
+directly appear as magnetic-field drifts during mapping or shimming
+measurements.
 
-The shim coils are driven using a modular 64-channel bipolar current supply developed for precision magnetic-field control \cite{bib:AhmedCurrentSupply2026}. The 64-channel design provides enough channels for the 54-coil square-shim array, with additional spare channels available for testing and future expansion. Each channel can supply a bipolar current of approximately $\pm 40~\mathrm{mA}$, which is sufficient for the current range required by the shim-coil setpoints.
+The shim coils are driven using a modular 64-channel bipolar current
+supply developed for precision magnetic-field control
+\cite{bib:AhmedCurrentSupply2026}. The 64-channel design provides
+enough channels for the 54-coil square-shim array, with additional
+spare channels available for testing and future expansion. Each
+channel can supply a bipolar current of approximately $\pm
+40~\mathrm{mA}$, which is sufficient for the current range required by
+the shim-coil setpoints.
 
-The current supply consists of one power distribution board and four 16-channel current-source boards, as shown in Fig.~\ref{fig:current_supply}. The current setpoints are programmed digitally and converted to analog reference voltages using 16-bit digital-to-analog converters. Each output channel then uses a feedback circuit with a precision sense resistor to regulate the coil current. The bipolar output is useful for shim operation because the calculated current for a given coil may be positive or negative depending on the desired correction field or harmonic-gradient mode.
+The current supply consists of one power distribution board and four
+16-channel current-source boards, as shown in
+Fig.~\ref{fig:current_supply}. The current setpoints are programmed
+digitally and converted to analog reference voltages using 16-bit
+digital-to-analog converters. Each output channel then uses a feedback
+circuit with a precision sense resistor to regulate the coil
+current. The bipolar output is useful for shim operation because the
+calculated current for a given coil may be positive or negative
+depending on the desired correction field or harmonic-gradient mode.
 
-The performance of this current supply was characterized separately in Ref.~\cite{bib:AhmedCurrentSupply2026}. Long-term measurements showed current stability at the $10^{-5}$ level over several hours, which is better than the stability requirement for shim-coil operation. A scale-model coil experiment also demonstrated that the supply can reproduce calculated current patterns accurately. In the present work, this current supply is used to apply the matrix-calculated setpoints for individual-coil tests and harmonic-mode measurements.
+The performance of this current supply was characterized separately in
+Ref.~\cite{bib:AhmedCurrentSupply2026}. Long-term measurements showed
+current stability at the $10^{-5}$ level over several hours, which is
+better than the stability requirement for shim-coil operation. A
+scale-model coil experiment also demonstrated that the supply can
+reproduce calculated current patterns accurately. In the present work,
+this current supply is used to apply the matrix-calculated setpoints
+for individual-coil tests and harmonic-mode measurements.
 
 \begin{figure}[tbp]
 \centering
 \includegraphics[width=0.75\linewidth]{current_supply_enclosure.png}
-\caption{Fully assembled 64-channel bipolar current supply used to drive the shim-coil array. The system consists of one power/distribution board and four 16-channel current-source boards mounted inside a shielded enclosure.}
+\caption{Fully assembled 64-channel bipolar current supply used to
+  drive the shim-coil array. The system consists of one
+  power/distribution board and four 16-channel current-source boards
+  mounted inside a shielded enclosure.}
 \label{fig:current_supply}
 \end{figure}
 
@@ -790,35 +893,83 @@ The performance of this current supply was characterized separately in Ref.~\cit
 
 \subsection{Panel fabrication and coil winding}
 
-The shim-coil array was implemented on six $4'\times4'$ corrugated plastic (Coroplast) sheets, chosen because it is lightweight, rigid, and easy to machine and handle. The coil geometry was marked directly on the sheet. After the layout was verified, grooves were cut to hold the wire placement: grooves across the ribs were made using a thin circular-saw blade, while grooves along the ribs were made using a knife.
+The shim-coil array was implemented on six $4'\times4'$ corrugated
+plastic (Coroplast) sheets, chosen because it is lightweight, rigid,
+and easy to machine and handle. The coil geometry was marked directly
+on the sheet. After the layout was verified, grooves were cut to hold
+the wire placement: grooves across the ribs were made using a thin
+circular-saw blade, while grooves along the ribs were made using a
+knife.
 
-Each square coil was wound using 30~AWG magnet wire with three turns per coil, which provides sufficient field amplitude at modest operating currents. On each panel, the lead wires were routed so that they converge at a common exit point, simplifying cable organization. To avoid blocking the feed throughs in the walls of the MSR, circular cutouts were made in the required locations on the corroplast sheets.
+Each square coil was wound using 30~AWG magnet wire with three turns
+per coil, which provides sufficient field amplitude at modest
+operating currents. On each panel, the lead wires were routed so that
+they converge at a common exit point, simplifying cable
+organization. To avoid blocking the feed throughs in the walls of the
+MSR, circular cutouts were made in the required locations on the
+corroplast sheets.
 
 \subsection{Installation inside the MSR and cabling}
 
-The 6 prototype panels were secured on the center of the MSR interior walls mostly using tapes and mechanical fasteners when mount points where available.Tape was used to allow easy removal of prototype panels at a later date.
-For each face, nine coils require eighteen conductors (two leads per coil). Ethernet cables were used as convenient multi-conductor bundles, with three cables per face and all cables routed through the MSR extrusions to a centralized location for easier connection to the current source. This organized routing and labeling is essential for reliable commissioning, mapping, and repeatable generation of harmonic modes.
+The 6 prototype panels were secured on the center of the MSR interior
+walls mostly using tapes and mechanical fasteners when mount points
+where available.Tape was used to allow easy removal of prototype
+panels at a later date.  For each face, nine coils require eighteen
+conductors (two leads per coil). Ethernet cables were used as
+convenient multi-conductor bundles, with three cables per face and all
+cables routed through the MSR extrusions to a centralized location for
+easier connection to the current source. This organized routing and
+labeling is essential for reliable commissioning, mapping, and
+repeatable generation of harmonic modes.
 
 \begin{figure}[tbp]
   \centering
   \includegraphics[width=0.46\linewidth]{Fig5-smaller.png}
-  \caption{Prototype square shim coils installed inside the TUCAN MSR. The full system comprises 54 coils arranged as nine coils on each of the six faces of the cubic structure. In this photograph, the side-wall, ceiling, and far-end panels are visible, while the floor and door-side panels are outside the field of view. The MSR provides passive magnetic shielding using high-permeability mu-metal.}
+  \caption{Prototype square shim coils installed inside the TUCAN
+    MSR. The full system comprises 54 coils arranged as nine coils on
+    each of the six faces of the cubic structure. In this photograph,
+    the side-wall, ceiling, and far-end panels are visible, while the
+    floor and door-side panels are outside the field of view. The MSR
+    provides passive magnetic shielding using high-permeability
+    mu-metal.}
   \label{fig:msr_prototype_install}
 \end{figure}
 
 
 \section{Mapping results}\label{sec7}
 
-Magnetic field mapping of the shim-coil system was carried out to verify proper coil operation and to evaluate the ability of the system to generate controlled magnetic-field gradients relevant to the TUCAN nEDM experiment. Measurements were performed along the central scan axis using a three-axis fluxgate magnetometer. The probe was moved from $-99.5$~cm to $+100.5$~cm in steps of 10~cm, where $z=0$ corresponds to the center of the system. At each position, measurements were taken for both positive and negative applied current. The shim-coil field was then obtained from the current-odd component,
+Magnetic field mapping of the shim-coil system was carried out to
+verify proper coil operation and to evaluate the ability of the system
+to generate controlled magnetic-field gradients relevant to the TUCAN
+nEDM experiment. Measurements were performed along the central scan
+axis using a three-axis fluxgate magnetometer. The probe was moved
+from $-99.5$~cm to $+100.5$~cm in steps of 10~cm, where $z=0$
+corresponds to the center of the system. At each position,
+measurements were taken for both positive and negative applied
+current. The shim-coil field was then obtained from the current-odd
+component,
 \begin{equation}
   B_{\mathrm{coil}}=\frac{B(+I)-B(-I)}{2},
 \end{equation}
-which suppresses constant backgrounds and slow drifts. The same procedure was used both for individual-coil measurements and for the harmonic-mode measurements described below.
+which suppresses constant backgrounds and slow drifts. The same
+procedure was used both for individual-coil measurements and for the
+harmonic-mode measurements described below.
 
 
 \subsection{Verification of individual shim coils}
 
-Each of the 54 shim coils was mapped individually in order to verify the electrical connections and magnetic response. The measurement procedure described above was applied to each coil in turn using $\pm 40$~mA. The magnetic-field profiles measured for all individual coils were in good agreement with the simulated fields. Figure~\ref{fig:singlecoil} shows three representative examples. In each case, the measured $B_x$, $B_y$, and $B_z$ components reproduce the main features of the corresponding COMSOL profiles, confirming correct coil connectivity and magnetic response. These results show that all shim coils were functioning as expected and were suitable for producing controlled magnetic-field gradients.
+Each of the 54 shim coils was mapped individually in order to verify
+the electrical connections and magnetic response. The measurement
+procedure described above was applied to each coil in turn using $\pm
+40$~mA. The magnetic-field profiles measured for all individual coils
+were in good agreement with the simulated
+fields. Figure~\ref{fig:singlecoil} shows three representative
+examples. In each case, the measured $B_x$, $B_y$, and $B_z$
+components reproduce the main features of the corresponding COMSOL
+profiles, confirming correct coil connectivity and magnetic
+response. These results show that all shim coils were functioning as
+expected and were suitable for producing controlled magnetic-field
+gradients.
 \begin{figure}
   \centering
 
@@ -846,13 +997,24 @@ Each of the 54 shim coils was mapped individually in order to verify the electri
     \end{minipage}
   }
 
-  \caption{Measured magnetic-field components $B_x$, $B_y$, and $B_z$ along the central scan axis for three representative individual shim coils (coils 2, 1, and 0), compared with the corresponding COMSOL calculations. The measured profiles are in good agreement with the simulated fields, confirming proper coil connectivity and magnetic response.}
+  \caption{Measured magnetic-field components $B_x$, $B_y$, and $B_z$
+    along the central scan axis for three representative individual
+    shim coils (coils 2, 1, and 0), compared with the corresponding
+    COMSOL calculations. The measured profiles are in good agreement
+    with the simulated fields, confirming proper coil connectivity and
+    magnetic response.}
   \label{fig:singlecoil}
 \end{figure}
 
 \subsection{Mapping of the $G_{1,0}$ gradient mode}
 
-After verifying the individual coils, the shim-coil system was configured to generate the linear gradient mode $G_{1,0}$. The coil-current setpoints were calculated using two approaches. In the first, free-space Biot--Savart calculations were used. In the second, the coil-current setpoints were obtained from COMSOL-based calculations that include the surrounding magnetic environment \cite{bib:comsol}.
+After verifying the individual coils, the shim-coil system was
+configured to generate the linear gradient mode $G_{1,0}$. The
+coil-current setpoints were calculated using two approaches. In the
+first, free-space Biot--Savart calculations were used. In the second,
+the coil-current setpoints were obtained from COMSOL-based
+calculations that include the surrounding magnetic environment
+\cite{bib:comsol}.
 
 The measured magnetic-field components $B_x$, $B_y$, and $B_z$ show good agreement in spatial shape with the simulated fields along the central scan axis. Figure~\ref{fig:G10map} shows the measured and simulated field components. An overall amplitude difference between measurement and simulation was corrected by applying a single scaling factor derived from the $B_x$ component. The fitted scaling factor for the $G_{1,0}$ mode was 0.937.
 
