@@ -819,10 +819,10 @@ dipole 1.  Interestingly, despite having a relatively strong $\partial
 B_z/\partial x$, it is corrected sufficiently well to meet the
 requirement.
 
-The worst result seen in Table~1, indicated by the boxed value, seems
-to be driven in part by a particularly pathological $\partial
-B_z/\partial x$.  While it does not meet the requirement set in
-Ref.~\cite{bib:jeffnote} that $\Delta B_z<140$~pT, recall that this
+The worst result seen in Table~\ref{tab:trials}, indicated by the
+boxed value, seems to be driven in part by a particularly pathological
+$\partial B_z/\partial x$.  While it does not meet the requirement set
+in Ref.~\cite{bib:jeffnote} that $\Delta B_z<140$~pT, recall that this
 requirement was set based on a $G_{1,0}$, {\it i.e.} a $\partial
 B_z/\partial z$ vertical gradient, and that the requirements on
 horizontal gradients were generally much looser.  In the end, we
@@ -843,14 +843,100 @@ should also be noted that the $\langle B_T^2\rangle$ was not
 calculated separately for each cell, rather the results in the table
 are averaged over the two cells.
 
-\section{Selection of coil paths}
+\subsection{Selection of coil paths}
+
+The final coil paths for the prototype shim coil system are shown in
+Fig.~\ref{fig:modeste}.
+\begin{figure}
+\centering
+\includegraphics[width=\textwidth]{MSR_E-W-wall.png}
+\caption{Final coil paths for the prototype shim coil system, shown in
+  simulation.  The figure also indicates the numbering of the coils.
+  The East wall has coils 0 through 8.  The same 27 test points as
+  were used in Fig.~\ref{fig:geometry} were used to sample the
+  magnetic field produced by the coils.}
+\label{fig:modeste}
+\end{figure}
+The final coil paths were chosen to mimic the originally satisfactory
+geometry of Fig.~\ref{fig:geometry}, with the following changes:
+\begin{itemize}
+\item We decided to relocate the coils to the inner wall of the MSR.
+  This would easy mounting during the prototyping and testing phase.
+  The walls are located at a distance of 1.1~m from the centre of the
+  MSR, as can be seen in Fig.~\ref{fig:modeste}.
+\item Current paths should not conflict with feedthrough holes in the
+  MSR walls, which are used for access.  This necessitated the
+  somewhat different rectangular shapes.
+\item The coils for each wall should fit within a $4'\times 4'$ area.
+  This was done for ease of our construction method, which relied on a
+  coroplast backing, as will be described in
+  Section~\ref{sec:whatever}.
+\end{itemize}
+Ultimately, we plan to relocate the coils to be inside the $B_0$ coil
+for the nEDM experiment, which is still being constructed.  The coils
+are likely to be moved inward by about 15~cm compared to where they
+were located for these measurements.
+
+As the final coil paths were being decided, we also repeatedly checked
+the ability of the shim coil system to reduce magnetic inhomogeneities
+satisfactorily, as in Table~\ref{tab:trials}.  As before, the
+calculations were still being done in free space.  In general, it was
+found that moving the coils outward to the MSR wall location had a
+significant improvement on the homogeneity in the central region, with
+only a slight increase in the required currents.  The results of the
+same homogeneity tests is shown in Table~\ref{tab:modeste}.
+
+It had been found in earlier studies that using almost any coil
+configuration with sufficient granularity would meet the homogeneity
+requirement.  The exact selection of the coil paths does not seem to
+be a critical parameter in the design.  This was a somewhat surprising
+result, but allowed us to freely relocate coil paths as necessary to
+avoid conflicts.  Our studies indicate that this method of magnetic
+field control and shimming has a large amount of flexibility in terms
+of the coil geometry.
+
+\begin{table}
+  \begin{center}
+    \begin{tabular}{ccccccc}
+      $(\ell,m)$ & \multicolumn{2}{c}{$\Delta B_z$} & \multicolumn{2}{c}{$\sigma(B_z)$} & \multicolumn{2}{c}{$\langle B_T^2\rangle$}\\
+      or &  \multicolumn{2}{c}{(pT)} & \multicolumn{2}{c}{(pT)} & \multicolumn{2}{c}{(nT$^2$)} \\\cline{2-7}
+      dipole & before & after & before & after & before & after \\
+      & correction & correction & correction & correction & correction & correction \\\hline
+      (1,0) & 455 &  6 & 140 & 0.6 & 0.26 & $3\times 10^{-6}$ \\
+      (1,1) &1790 &106 & 458 & 9 & 0.36 & $2\times 10^{-4}$ \\
+      (2,0) & 500 & 58 & 106 & 7 & 0.04 & $4\times 10^{-4}$ \\
+      (2,1) & 700 & 16 & 120 & 2 & 0.02 & $5\times 10^{-5}$ \\
+      (2,2) &1065 &116 & 230 &12 & 0.17 & $4\times 10^{-4}$ \\
+      dipole 1 &1140&$\boxed{232}$ & 244 &14 & 0.53 & $7\times 10^{-4}$ \\
+      dipole 2 upper&500& 20 & 109 & 3 & 0.47 & $3\times 10^{-5}$ \\
+      dipole 2 lower&220& 17 &  50 & 3 & 0.47 & $3\times 10^{-5}$ \\
+      dipole 3 upper&870& 37 & 187 & 8 & 0.16 & $1\times 10^{-4}$ \\
+      dipole 3 lower&400& 41 &  87 & 4 & 0.16 & $1\times 10^{-4}$ \\
+      (3,1) & 200 & 61 &  31 & 6 & 0.004& $1\times 10^{-4}$ \\
+      (3,3) & 340 & 65 &  61 & 5 & 0.02 & $2\times 10^{-4}$ \\
+      (4,2) & 123 & 59 &  14 & 6 & 0.0005&$2\times 10^{-4}$ \\
+      \hline
+      goal & & 140 & & 40 & & 0.1 \\
+    \end{tabular}
+    \caption{FIX THIS TABLE IT IS STILL THE SAME AS THE PREVIOUS GET
+      FROM MODESTE Trials using the final coil geometry, testing their
+      ability to counteract various applied
+      fields.\label{tab:modeste}}
+  \end{center}
+\end{table}
+
+We have now completed COMSOL simulations which include the effects of
+the highly permeable MSR walls.  The results also indicate
+satisfactory homogeneity for the various field shapes assumed in the
+study.  The COMSOL simulations will be described in
+Section~\ref{sec:something}, and compared with data.
 
 \section{Design and construction of current source}
 
 Using the free space simulation described above, and the same assumed
 magnetic inhomogeneities, of varying spatial dependences but always
 3~nT max-min across the central 1~m$^3$ volume, the currents required
-for the coils were surveyed.
+for the coils were surveyed.  Assuming one turn for each coil, 
 
 The shim coils are driven using a modular 64-channel bipolar current
 supply developed for precision magnetic-field control
@@ -874,11 +960,12 @@ depending on the desired correction field or harmonic-gradient mode.
 The performance of this current supply was characterized separately in
 Ref.~\cite{bib:AhmedCurrentSupply2026}. Long-term measurements showed
 current stability at the $10^{-5}$ level over several hours, which is
-better than the stability requirement for shim-coil operation. A
-scale-model coil experiment also demonstrated that the supply can
-reproduce calculated current patterns accurately. In the present work,
-this current supply is used to apply the matrix-calculated setpoints
-for individual-coil tests and harmonic-mode measurements.
+better than the stability requirement for shim-coil operation (EXPLAIN
+THE REQUIREMENT SOMEWHERE). A scale-model coil experiment also
+demonstrated that the supply can reproduce calculated current patterns
+accurately. In the present work, this current supply was used to apply
+the matrix-calculated setpoints for individual-coil tests and
+harmonic-mode measurements.
 
 \begin{figure}[tbp]
 \centering
@@ -897,32 +984,36 @@ for individual-coil tests and harmonic-mode measurements.
 
 The shim-coil array was implemented on six $4'\times4'$ corrugated
 plastic (Coroplast) sheets, chosen because it is lightweight, rigid,
-and easy to machine and handle. The coil geometry was marked directly
-on the sheet. After the layout was verified, grooves were cut to hold
-the wire placement: grooves across the ribs were made using a thin
-circular-saw blade, while grooves along the ribs were made using a
-knife.
+and easy to cut and handle. The coil geometry was drawn directly on
+the sheet using measurement tools and a marker.  Grooves were cut into
+the coroplast surface to hold the wire placement.  Grooves across the
+ribs were made using a thin circular-saw blade, while grooves along
+the ribs were made using a knife.
 
 Each square coil was wound using 30~AWG magnet wire with three turns
-per coil, which provides sufficient field amplitude at modest
-operating currents. On each panel, the lead wires were routed so that
-they converge at a common exit point, simplifying cable
-organization. To avoid blocking the feed throughs in the walls of the
-MSR, circular cutouts were made in the required locations on the
-corroplast sheets.
+per coil.  Three turns were used because we had temporarily planned to
+use a simpler, less homogeneous $B_0$ coil, and implementing the three
+turns would have allowed us to correct the somewhat worse
+inhomogeneity of that coil.  Although the two coils were never used
+together, this was the idea of the decision.
+
+For each panel (wall), lead wires from each coil were twisted together
+and routed back to a common exit point, simplifying cable
+organization. To avoid blocking the feedthrough holes in the walls of
+the MSR, cutouts were made in the coroplast sheets
+(Fig.~\ref{fig:msr_prototype_install}).
 
 \subsection{Installation inside the MSR and cabling}
 
-The 6 prototype panels were secured on the center of the MSR interior
-walls mostly using tapes and mechanical fasteners when mount points
-where available.Tape was used to allow easy removal of prototype
-panels at a later date.  For each face, nine coils require eighteen
-conductors (two leads per coil). Ethernet cables were used as
-convenient multi-conductor bundles, with three cables per face and all
-cables routed through the MSR extrusions to a centralized location for
-easier connection to the current source. This organized routing and
-labeling is essential for reliable commissioning, mapping, and
-repeatable generation of harmonic modes.
+The six prototype panels were secured at the centres of the MSR
+interior walls using a combination of double-sided tape, and
+mechanical fasteners when mount points where available.  Tape was used
+to allow easy removal of prototype panels at a later date.  For each
+face, nine coils require eighteen conductors (two leads per
+coil). Ethernet cables were used as convenient multi-conductor
+bundles, with three cables per face and all cables routed through the
+MSR extrusions to a centralized location for easier connection to the
+current source.
 
 \begin{figure}[tbp]
   \centering
@@ -930,26 +1021,30 @@ repeatable generation of harmonic modes.
   \caption{Prototype square shim coils installed inside the TUCAN
     MSR. The full system comprises 54 coils arranged as nine coils on
     each of the six faces of the cubic structure. In this photograph,
-    the side-wall, ceiling, and far-end panels are visible, while the
-    floor and door-side panels are outside the field of view. The MSR
-    provides passive magnetic shielding using high-permeability
-    mu-metal.}
+    the side-wall, ceiling, and far-end panels are visible.  Floor
+    coils are located underneath the panelled floor, while the
+    door-side panels are outside the field of view because the door
+    has been pulled back to allow access (that panel is mounted on the
+    door itself).}
   \label{fig:msr_prototype_install}
 \end{figure}
 
 
 \section{Mapping results}\label{sec7}
 
-Magnetic field mapping of the shim-coil system was carried out to
-verify proper coil operation and to evaluate the ability of the system
-to generate controlled magnetic-field gradients relevant to the TUCAN
-nEDM experiment. Measurements were performed along the central scan
-axis using a three-axis fluxgate magnetometer. The probe was moved
-from $-99.5$~cm to $+100.5$~cm in steps of 10~cm, where $z=0$
-corresponds to the center of the system. At each position,
-measurements were taken for both positive and negative applied
-current. The shim-coil field was then obtained from the current-odd
-component,
+Magnetic field mapping of the shim-coil system was carried out along a
+central scan axis (X????) using a three-axis fluxgate magnetometer.
+The axes of the fluxgate magnetometer were aligned as well as possible
+with the axes of the MSR (*** to a systematic precision of about
+5$^\circ$ for each measurement***???).  The MSR was used to define the
+coordinate system, with the centre of the MSR being located at the
+origin $(x,y,z)=(0,0,0)$.  The probe was moved from $-99.5$~cm to
+$+100.5$~cm in steps of 10~cm, where $z=0$ (EXPLAIN THE COORDINATE
+SYSTEM I DO NOT UNDERSTAND WHY Z IS USED HERE) corresponds to the
+center of the system. At each position, a measurement of the field was
+made for each fluxgate axis. were taken for both positive and negative
+applied current. EXPLAIN WHAT A POSITIVE CURRENT MEANS.  The shim-coil
+field was then obtained from
 \begin{equation}
   B_{\mathrm{coil}}=\frac{B(+I)-B(-I)}{2},
 \end{equation}
