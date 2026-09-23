@@ -1035,32 +1035,34 @@ current source.
 The prototype shim-coil system was characterized by measuring the
 magnetic field along the $x$ direction through the MSR. A three-axis
 fluxgate magnetometer was used to measure $B_x$, $B_y$, and $B_z$ at
-each scan position. Measurements were made with both positive and
-negative coil currents. The field produced by the shim coils was
-determined from
+each scan position. Measurements were performed with both positive and
+negative applied coil currents. The magnetic field produced by the
+shim coils was determined from
 
 \begin{equation}
-B_{\mathrm{coil}} =
-\frac{B(+I)-B(-I)}{2}.
+B_{\mathrm{coil}}
+=
+\frac{B(+I)-B(-I)}{2},
 \label{eq:coil_difference}
 \end{equation}
 
-This subtraction reduces the contribution from the background field
-inside the MSR and isolates the field that changes sign with the
-applied coil current.
+which reduces the contribution from the background field inside the
+MSR and isolates the magnetic field that changes sign with the applied
+coil current.
 
-The measurements were first made for each coil individually. The
-system was then operated with current patterns calculated to generate
-selected harmonic-gradient fields. These measurements provide two
-different tests of the system. The individual-coil measurements test
-the response of the physical coils relative to the COMSOL model,
-while the harmonic-mode measurements test whether the responses of
-many coils can be combined to generate the desired field shapes.
+Measurements were first performed for each shim coil individually.
+The system was then operated using current patterns calculated to
+generate selected harmonic-gradient fields. These measurements provide
+two complementary tests of the system. The individual-coil
+measurements test the response of the physical coils relative to the
+COMSOL model, while the harmonic-mode measurements test whether the
+responses of many coils can be combined to generate the desired
+spatial field patterns.
 
 Additional measurements were performed along the $y$ direction through
 the MSR door. These measurements provide a second scan geometry and
-also allow the effect of the coordinate transformation used for the
-fluxgate measurements to be examined.
+allow the coordinate transformation used for the fluxgate measurements
+to be examined.
 
 
 % ==========================================================
@@ -1077,59 +1079,62 @@ the other five faces of the system.
 
 \begin{figure}[htbp]
     \centering
-    \includegraphics[width=0.95\linewidth]{east_wall_fit.pdf}
+    \includegraphics[width=\linewidth]{east_wall_fit.pdf}
     \caption{Measured magnetic-field components for the nine shim coils
     on the east wall, compared with the corresponding COMSOL
     calculations. The points show the measured $B_x$, $B_y$, and $B_z$
-    components. The solid curves are the original COMSOL calculations
-    and the dashed curves show the COMSOL fields after applying the
-    fitted scale factor for each coil.}
+    components. The solid curves show the nominal COMSOL calculations,
+    while the dashed curves show the COMSOL fields after applying the
+    fitted scale factor $s$ for each individual coil.}
     \label{fig:east_wall}
 \end{figure}
 
-Main points:
-\begin{itemize}
-\item The coils work.
-\item Scale factors between .85 and .96
-\end{itemize}
-
-
-The measured profiles reproduce the main spatial features predicted by
-COMSOL. The relative sizes and signs of the three field components also
-follow the simulation. The main difference is in the overall field
-amplitude. For this reason, a multiplicative scale factor was fitted
-between the measured field and the COMSOL field for each coil.
+The measured profiles reproduce the principal spatial features
+predicted by COMSOL. The relative signs and spatial dependences of the
+three magnetic-field components are also reproduced. The main
+difference is in the overall field amplitude. For this reason, a
+multiplicative scale factor was fitted between the measured and COMSOL
+fields for each coil.
 
 For the east-wall coils shown in Fig.~\ref{fig:east_wall}, the fitted
-scale factors are approximately 0.85--0.96. This means that the
-measured field from these coils is generally slightly smaller than the
-nominal COMSOL prediction, while the spatial shape remains similar.
+scale factors are approximately 0.85--0.96. Thus, for these coils, the
+measured field amplitude is generally slightly smaller than the
+nominal COMSOL prediction while the overall spatial structure remains
+similar.
 
-The fitted scale factors for all 54 coils are shown in
+The fitted scale factors for all 54 shim coils are shown in
 Fig.~\ref{fig:coil_scale_factors}.
 
 \begin{figure}[htbp]
     \centering
-    \includegraphics[width=0.75\linewidth]{coil_scale_factors.pdf}
-    \caption{Fitted scale factor for each of the 54 shim coils. A value
-    of one corresponds to the nominal COMSOL response. Most coils have
-    scale factors below one and form a common group near 0.9, while a
-    small number of coils show substantially different responses.}
+    \includegraphics[width=0.82\linewidth]{coil_scale_factors.pdf}
+    \caption{Fitted COMSOL scale factor for each of the 54 shim coils.
+    A value of one corresponds to the nominal COMSOL response. Most of
+    the coils form a common distribution near 0.9, while a small number
+    exhibit substantially different responses.}
     \label{fig:coil_scale_factors}
 \end{figure}
 
-Most of the coils have a similar response, with scale factors clustered
-near 0.9. A few coils show larger deviations. In particular, coils
-9--11 and coil 49 have responses above the main distribution. The scale
-factor is used here as an empirical calibration of the coil response.
-A deviation from one does not by itself identify its physical origin.
+Most of the coils exhibit a similar response, with fitted scale factors
+clustered near 0.9, while a smaller number show larger deviations. The
+scale factor is used here as an empirical calibration of the installed
+coil response. A deviation from one does not, by itself, identify the
+physical origin of the difference.
 
-These measurements are important when several coils are used
-simultaneously. A common scale difference can be corrected with one
-overall normalization. However, differences from coil to coil can
-change the shape of a field produced from a combination of many coils.
-This becomes important for the higher-order harmonic modes discussed
-below.
+These measurements become important when several coils are operated
+simultaneously. A common amplitude difference can be described by one
+overall normalization factor. However, coil-to-coil differences can
+modify the shape of a magnetic field generated from a combination of
+many coils. This becomes particularly important for the higher-order
+harmonic modes discussed below.The magnetic field in the measurement region can be represented as a superposition of harmonic-gradient modes $G_{\ell,m}$, following the convention used in nEDM magnetic-field analyses~\cite{Abel2019}.
+Here, $\ell$ denotes the order of the spatial variation and $m$
+distinguishes the different field symmetries within a given order.
+Generating selected $G_{\ell,m}$ modes therefore provides a useful
+test of whether the fields from many individual shim coils can be
+combined to reproduce more complicated and well-defined spatial field
+structures. In the following measurements, the required coil-current
+setpoints were obtained from the response matrix for the corresponding
+target harmonic field.
 
 
 % ==========================================================
@@ -1139,53 +1144,51 @@ below.
 
 As a first test using all of the coils together, current setpoints were
 calculated to produce the $G_{1,0}$ harmonic-gradient mode. The COMSOL
-response matrix was used to calculate the current required in each of
+response matrix was used to determine the required current in each of
 the 54 coils. The calculated currents were then applied to the
-installed shim-coil system and the field was measured along the same
-$x$-scan direction.
+installed shim-coil system and the magnetic field was measured along
+the same $x$-scan direction.
 
-Figure~\ref{fig:g10} compares the measured field with the COMSOL
-prediction and with the ideal $G_{1,0}$ target field.
+Figure~\ref{fig:g10} compares the measured magnetic field with the
+COMSOL prediction and with the ideal $G_{1,0}$ harmonic target.
 
 \begin{figure}[htbp]
     \centering
-    \includegraphics[width=0.72\linewidth]{G10_paper_target.pdf}
-    \caption{Measured field for the $G_{1,0}$ current pattern compared
-    with the COMSOL prediction and the ideal harmonic target. The
-    current setpoints were obtained from the COMSOL response matrix.}
+    \includegraphics[width=\linewidth]{G10_paper_target.pdf}
+    \caption{Measured magnetic-field components for the $G_{1,0}$
+    current pattern compared with the COMSOL prediction and the ideal
+    harmonic target. The coil-current setpoints were obtained from the
+    COMSOL response matrix. The dashed curve shows the COMSOL
+    prediction after applying a single fitted overall scale factor.}
     \label{fig:g10}
 \end{figure}
 
-main points:
-\begin{itemize}
-\item show fit
-\item fit generally agrees with scale factors
-\end{itemize}
-
 The measured field follows the spatial dependence predicted by COMSOL.
-The dominant component changes approximately linearly through the
-central part of the scan. The COMSOL field departs from the ideal
-straight-line target near the ends of the scan. This is expected because
-the finite coil system cannot reproduce the ideal harmonic field exactly
-over an unlimited volume.
+The dominant component varies approximately linearly through the
+central part of the scan. Toward the ends of the scan, the field
+generated by the finite coil array departs from the ideal straight-line
+harmonic target.
 
-There is also a small overall difference in amplitude between the
-measurement and the COMSOL calculation. Fitting one scale factor gives
+A small overall difference in amplitude is also observed between the
+measurement and the COMSOL calculation. Fitting a single scale factor
+to the measured and calculated field components gives
 
 \begin{equation}
-s = 0.937,
+s = 0.937.
+\label{eq:g10_scale_factor}
 \end{equation}
 
-where the COMSOL field is multiplied by $s$ for comparison with the
-measurement. Thus, for this mode, the measured field amplitude is about
-94\% of the COMSOL prediction. This value is consistent with the
-approximately 0.9 response observed for most of the individual coils.
+Thus, for this mode, the measured magnetic-field amplitude is
+approximately 94\% of the nominal COMSOL prediction. This value is
+consistent with the approximately 0.9 response observed for most of
+the individual shim coils.
 
-The $G_{1,0}$ measurement therefore provides a useful first check of the
-complete system. It shows that the response matrix gives the expected
-field shape when the contributions from all 54 coils are combined. The
-remaining amplitude difference can largely be described by one overall
-scale factor.
+The $G_{1,0}$ measurement therefore provides a first test of the
+complete multi-coil system. It demonstrates that the response-matrix
+method produces the expected spatial field structure when the
+contributions from all 54 coils are combined, while the remaining
+overall amplitude difference can largely be described by a single
+normalization factor.
 
 
 % ==========================================================
@@ -1193,53 +1196,56 @@ scale factor.
 \label{sec:g12}
 % ==========================================================
 
-Higher-order modes provide a more sensitive test because their field
-shapes depend on the relative contributions from many different coils.
-One example is the $G_{1,2}$ mode.
+Higher-order harmonic modes provide a more sensitive test of the
+system because their field shapes depend on the relative contributions
+from many different coils. One example is the $G_{1,2}$ mode.
 
-The original COMSOL calculation reproduces the main $G_{1,2}$ field
-shape, but the measured field contains an additional local feature,
-most clearly visible in $B_z$ on the negative-$x$ side of the scan.
-This feature is not reproduced by the calculation when all coils are
-assumed to have their nominal COMSOL response.
+The nominal COMSOL calculation reproduces the principal $G_{1,2}$
+field structure, but the measured field contains an additional local
+feature, most clearly visible in $B_z$ on the negative-$x$ side of the
+scan. This feature is not reproduced when every coil is assumed to
+have exactly its nominal COMSOL response.
 
-The individual-coil measurements provide a way to test the origin of
-this difference. The expected field was recalculated using the measured
-scale factor for each individual coil. The result is shown in
-Fig.~\ref{fig:g12_calibration}.
+The individual-coil measurements provide a means of testing the origin
+of this difference. The expected field was recalculated after including
+the measured scale factor for each individual coil. The result is shown
+in Fig.~\ref{fig:g12_calibration}.
 
 \begin{figure}[htbp]
     \centering
-    \includegraphics[width=0.95\linewidth]
+    \includegraphics[width=\linewidth]
     {G12_calibration_comparison.pdf}
-    \caption{Measured $G_{1,2}$ field compared with the COMSOL
-    prediction. (a) Original prediction using the nominal COMSOL
-    response of each coil. (b) Prediction after including the measured
+    \caption{Measured $G_{1,2}$ magnetic field compared with the COMSOL
+    prediction. (a) Original calculation using the nominal COMSOL
+    response of each coil. (b) Calculation after including the measured
     individual-coil calibration factors. The ideal harmonic target is
-    shown by the dotted line.}
+    shown by the dotted curve.}
     \label{fig:g12_calibration}
 \end{figure}
 
 Including the individual-coil calibration factors produces a clear
-improvement. In particular, the calculation now reproduces much more
-closely the local $B_z$ feature seen in the measurement. The sign,
-position, and approximate size of this feature are recovered when the
-different measured responses of the coils are included.
+improvement in the calculated field. In particular, the calculation
+reproduces more closely the local $B_z$ feature observed in the
+measurement. The sign, position, and approximate magnitude of this
+feature are recovered when the different measured responses of the
+individual coils are included.
 
-The improvement can also be seen from the residuals. For $B_z$, the
+The improvement is also reflected in the residuals. For $B_z$, the
 RMS residual over the full scan decreases from approximately
-5.56~nT to 1.81~nT after applying the individual-coil calibration.
+5.562~nT to 1.480~nT after applying the individual-coil calibration.
 When the three field components are considered in the central region
-of interest, the RMS residual decreases from approximately 2.37~nT
-to 0.71~nT.
+of interest, the RMS residual decreases from approximately 2.195~nT
+to 0.556~nT.
+
+% Check these RMS values against the final calibration output
+% before manuscript submission.
 
 The calibration does not remove every difference between measurement
-and simulation. However, the comparison shows that the unusual feature
-in the $G_{1,2}$ measurement is largely explained by the different
-responses of the individual coils. This result also shows why a single
-global normalization is not sufficient for accurate prediction of all
-higher-order modes. For these modes, the response of each coil should
-be included separately.
+and simulation. Nevertheless, the comparison demonstrates that the
+unusual feature observed in the $G_{1,2}$ measurement can be largely
+reproduced when the measured coil-to-coil response differences are
+included. It also shows why a single global normalization is not
+necessarily sufficient for accurate prediction of higher-order modes.
 
 
 % ==========================================================
@@ -1248,50 +1254,48 @@ be included separately.
 % ==========================================================
 
 A different behaviour was observed for the $G_{2,1}$ mode. The ideal
-$G_{2,1}$ field is symmetric about the centre of the scan, while the
-measurement made using the COMSOL-derived current setpoints shows a
-clear left--right asymmetry.
+$G_{2,1}$ field is symmetric about the centre of the scan, whereas the
+measurement obtained using the COMSOL-derived current setpoints shows
+a clear left--right asymmetry.
 
-To investigate whether this behaviour was produced by the current
+To investigate whether this behaviour is related to the current
 solution, two sets of coil currents were compared. One set was
-calculated using the free-space response matrix, and the other was
+calculated using the free-space response matrix, while the second was
 calculated using the COMSOL response matrix. The results are shown in
 Fig.~\ref{fig:g21_comparison}.
 
 \begin{figure}[htbp]
     \centering
-    \includegraphics[width=0.95\linewidth]
+    \includegraphics[width=\linewidth]
     {G21_freespace_vs_comsol.pdf}
-    \caption{Measured $G_{2,1}$ field obtained using
+    \caption{Measured $G_{2,1}$ magnetic field obtained using
     (a) free-space-derived coil-current setpoints and
-    (b) COMSOL-derived coil-current setpoints. The measured field is
-    compared with the corresponding calculated field and with the
-    ideal harmonic target.}
+    (b) COMSOL-derived coil-current setpoints. The measured magnetic
+    field is compared with the corresponding calculated field and with
+    the ideal harmonic target.}
     \label{fig:g21_comparison}
 \end{figure}
 
-The currents obtained from the free-space model produce a more
-symmetric measured profile, although the resulting field does not
-reproduce the target amplitude and shape as well. The COMSOL-derived
-currents give better overall agreement with the target field,
-especially through the central part of the scan, but a clear asymmetry
+The currents obtained from the free-space response matrix produce a
+more symmetric measured profile, although the resulting field does not
+reproduce the target amplitude and shape as closely. The
+COMSOL-derived currents provide better overall agreement with the
+target through much of the scan, but a clear left--right asymmetry
 remains.
 
-This comparison is different from the $G_{1,2}$ case. For $G_{1,2}$,
-the main discrepancy can be largely reproduced by including the
-measured response of each coil. For $G_{2,1}$, the asymmetry appears
-when the COMSOL response matrix is used to determine the current
-setpoints. The present measurements therefore point to the response
-matrix or the COMSOL model used to construct it as an area that
-requires further investigation. Possible contributions include the
-numerical precision of the response matrix, the COMSOL mesh, and
-details of the model geometry and magnetic boundary conditions.
+This behaviour differs from that observed for $G_{1,2}$. In the
+$G_{1,2}$ case, the principal discrepancy can be largely reproduced by
+including the measured responses of the individual coils. For
+$G_{2,1}$, the asymmetry is associated with the current solution
+obtained using the COMSOL response matrix.
 
-At present, the origin of the $G_{2,1}$ asymmetry has not been
-identified. We therefore do not interpret this result as a failure of
-the shim-coil hardware or as a simple coil-calibration effect. Instead,
-it provides a useful diagnostic for improving the field model and the
-response matrix used to calculate the coil currents.
+The origin of the $G_{2,1}$ asymmetry has not yet been identified.
+Possible contributions include details of the response matrix, COMSOL
+mesh, model geometry, and magnetic boundary conditions. We therefore
+do not interpret this result as a simple failure of the shim-coil
+hardware or as a straightforward individual-coil calibration effect.
+Instead, it provides a useful diagnostic for continued improvement of
+the field model and response matrix.
 
 
 % ==========================================================
@@ -1300,54 +1304,44 @@ response matrix used to calculate the coil currents.
 % ==========================================================
 
 The harmonic-mode measurements were extended to selected third-order
-modes to test the ability of the shim-coil array to generate more
-complicated spatial field structures. Two examples, $G_{3,0}$ and
-$G_{3,-2}$, are shown here.
-
-Figure~\ref{fig:g30} shows the measured field for the $G_{3,0}$ mode
-together with the COMSOL calculation and the ideal harmonic target.
+modes in order to test the ability of the shim-coil system to generate
+more complicated spatial magnetic-field structures. Two representative
+examples, $G_{3,0}$ and $G_{3,-2}$, are shown in
+Fig.~\ref{fig:third_order}.
 
 \begin{figure}[htbp]
     \centering
-    \includegraphics[width=0.72\linewidth]
-    {G30_paper_target.pdf}
-    \caption{Measured magnetic-field components for the $G_{3,0}$
-    current pattern compared with the COMSOL calculation and the
-    ideal harmonic target.}
-    \label{fig:g30}
+    \includegraphics[width=\linewidth]
+    {G30_G3-2_third_order.pdf}
+    \caption{Measured magnetic-field components for selected
+    third-order harmonic modes compared with the corresponding COMSOL
+    calculations and ideal harmonic targets:
+    (a) $G_{3,0}$ and (b) $G_{3,-2}$.
+    The points show the measured $B_x$, $B_y$, and $B_z$ components,
+    the solid curves show the COMSOL calculations, and the dotted
+    curves show the ideal harmonic targets.}
+    \label{fig:third_order}
 \end{figure}
 
-The measured field follows the main spatial structure predicted by
-COMSOL. Differences between the field generated by the finite coil
-array and the ideal harmonic target become more pronounced toward the
-ends of the scan. The measured points nevertheless follow the
-corresponding COMSOL field structure over the measured range.
+For the $G_{3,0}$ mode, the measured magnetic-field components follow
+the principal spatial structure predicted by COMSOL. Differences
+between the field generated by the finite coil array and the ideal
+harmonic target become more pronounced toward the ends of the scan.
+The measured points nevertheless follow the corresponding COMSOL field
+structure over the measured range.
 
-A second third-order example, the $G_{3,-2}$ mode, is shown in
-Fig.~\ref{fig:g3m2}.
-
-\begin{figure}[htbp]
-    \centering
-    \includegraphics[width=0.72\linewidth]
-    {G3-2_paper_target.pdf}
-    \caption{Measured magnetic-field components for the $G_{3,-2}$
-    current pattern compared with the COMSOL calculation and the
-    ideal harmonic target.}
-    \label{fig:g3m2}
-\end{figure}
-
-The $G_{3,-2}$ mode gives a different spatial dependence and a different
-combination of field components from the $G_{3,0}$ mode. The measured
-components again reproduce the main features predicted by the COMSOL
-calculation.
+The $G_{3,-2}$ mode gives a different spatial dependence and a
+different combination of magnetic-field components from the
+$G_{3,0}$ mode. The measured components again reproduce the principal
+features predicted by the COMSOL calculation.
 
 These measurements extend the harmonic-mode tests to more complicated
-third-order field structures. They show that the response-matrix method
-can be used to produce a range of spatial field patterns with the
-installed shim-coil array. The comparison is primarily between the
-measured field and the field generated by the finite coil system; exact
-agreement with the ideal harmonic expression over the complete scan
-range is not expected.
+third-order field structures. They demonstrate that the response-matrix
+method can be used to generate a range of spatial magnetic-field
+patterns with the installed shim-coil array. Exact agreement with the
+ideal harmonic expressions over the complete scan range is not
+expected because the magnetic field is generated by a finite coil
+system.
 
 
 % ==========================================================
@@ -1356,15 +1350,15 @@ range is not expected.
 % ==========================================================
 
 Additional measurements were performed along the $y$ direction through
-the MSR door. In this scan geometry, comparison of the measured vector
-field with the COMSOL field required an additional rotation of the
-measured $B_x$ and $B_z$ components.
+the MSR door. For this scan geometry, comparison of the measured vector
+field with the COMSOL calculation required an additional rotation of
+the measured $B_x$ and $B_z$ components.
 
-A rotation of $5^\circ$ in the $x$--$z$ plane was applied in the
-analysis according to
+A rotation of $5^\circ$ in the $x$--$z$ plane was applied according to
 
 \begin{equation}
-B_x' =
+B_x'
+=
 B_x\cos\theta + B_z\sin\theta ,
 \label{eq:door_rotation_bx}
 \end{equation}
@@ -1372,7 +1366,8 @@ B_x\cos\theta + B_z\sin\theta ,
 and
 
 \begin{equation}
-B_z' =
+B_z'
+=
 -B_x\sin\theta + B_z\cos\theta ,
 \label{eq:door_rotation_bz}
 \end{equation}
@@ -1381,6 +1376,7 @@ where
 
 \begin{equation}
 \theta = 5^\circ .
+\label{eq:door_rotation_angle}
 \end{equation}
 
 The $B_y$ component is unchanged by this additional rotation.
@@ -1390,127 +1386,150 @@ Fig.~\ref{fig:door_rotation13}.
 
 \begin{figure}[htbp]
     \centering
-    \includegraphics[width=0.95\linewidth]{coil_13_door_rotation_comparison.pdf}
+    \includegraphics[width=\linewidth]
+    {coil_13_door_rotation_comparison.pdf}
     \caption{Door-side $y$ scan for coil 13 compared with the COMSOL
-    calculation. (a) Measured field components before applying the
-    $5^\circ$ rotation of the $B_x$ and $B_z$ components.
-    (b) The same measurement after applying the coordinate rotation.}
+    calculation. (a) Measured magnetic-field components before
+    applying the $5^\circ$ rotation of the $B_x$ and $B_z$ components.
+    (b) The same measurement after applying the coordinate rotation.
+    The RMS value quantifies the overall three-component residual
+    relative to the COMSOL calculation.}
     \label{fig:door_rotation13}
 \end{figure}
 
 Before the coordinate correction, a nonzero $B_z$ component is visible
-in the measured data while the corresponding COMSOL component is close
-to zero over most of the scan. After applying the $5^\circ$ rotation,
-the apparent $B_z$ contribution is substantially reduced and the
-measured component structure agrees more closely with the COMSOL
+in the measured data while the corresponding COMSOL component remains
+close to zero over most of the scan. After applying the $5^\circ$
+rotation, the apparent $B_z$ contribution is substantially reduced and
+the measured component structure agrees more closely with the COMSOL
 calculation.
 
-The same comparison for coil 14 is shown in
-Fig.~\ref{fig:door_rotation14}.
+The same comparison for coil 40 is shown in
+Fig.~\ref{fig:door_rotation40}.
 
 \begin{figure}[htbp]
     \centering
-    \includegraphics[width=0.95\linewidth]
-    {coil_14_door_rotation_comparison.pdf}
-    \caption{Door-side $y$ scan for coil 14 compared with the COMSOL
-    calculation. (a) Measured field components before applying the
-    $5^\circ$ coordinate rotation. (b) The same measurement after
-    applying the rotation of the $B_x$ and $B_z$ components.}
-    \label{fig:door_rotation14}
+    \includegraphics[width=\linewidth]
+    {coil_40_door_rotation_comparison.pdf}
+    \caption{Door-side $y$ scan for coil 40 compared with the COMSOL
+    calculation. (a) Measured magnetic-field components before
+    applying the $5^\circ$ coordinate rotation.
+    (b) The same measurement after applying the rotation of the
+    $B_x$ and $B_z$ components.}
+    \label{fig:door_rotation40}
 \end{figure}
 
 A similar reduction of the apparent $B_z$ component is observed for
-coil 14 after the coordinate rotation. The comparison therefore shows
-that the treatment is not limited to a single coil.
+coil 40 after applying the coordinate rotation. The comparison
+therefore shows that the effect is not restricted to a single coil.
 
 The improvement obtained after the rotation is consistent with a small
 relative angular offset between the fluxgate measurement axes and the
-coordinate system used for the field calculation. A small angular
-offset can mix two measured field components. The door-scan comparison
-therefore provides a useful check of the coordinate transformation used
-when comparing the measured vector field with the COMSOL calculation.
-
-
+coordinate system used for the field calculation. Such an offset can
+mix the measured $B_x$ and $B_z$ components. The door-scan comparison
+therefore provides an additional check of the coordinate transformation
+used when comparing the measured vector field with the COMSOL model.
 % ==========================================================
 \section{Discussion and conclusion}
 \label{sec:discussion_conclusion}
 % ==========================================================
 
-A 54-coil square shim-coil system has been constructed and tested
-inside the TUCAN magnetically shielded room. The measurements presented
-here characterize the system at several levels: the response of
-individual coils, the generation of harmonic field patterns using many
-coils simultaneously, the effect of individual-coil calibration, and
-the coordinate treatment required for vector-field measurements.
+A 54-coil square shim-coil system has been constructed and tested inside
+the TUCAN magnetically shielded room. The measurements presented here
+characterize the system at several levels: the response of individual
+coils, the generation of harmonic field patterns using many coils
+simultaneously, the effect of individual-coil calibration, and the
+coordinate treatment required for vector-field measurements.
 
-The individual-coil measurements show that the installed coils
-reproduce the main spatial field shapes predicted by COMSOL. Most
-coils have similar amplitude responses, with fitted scale factors
-clustered near 0.9, while a smaller number show larger deviations.
-These measurements provide an experimental calibration of the
+The individual-coil measurements show that the installed coils reproduce
+the principal spatial field structures predicted by COMSOL. Most coils
+have similar amplitude responses, with fitted scale factors clustered
+near 0.9, while a smaller number show larger deviations. These
+measurements therefore provide an experimental calibration of the
 installed coil responses in addition to the nominal geometrical model.
+The coil-to-coil variations are particularly relevant when several coils
+are combined to generate higher-order field patterns.
 
 The $G_{1,0}$ measurement provides a first test of the complete
 multi-coil system. The measured field follows the spatial dependence
-predicted by COMSOL, with an overall fitted scale factor of 0.937.
-This result shows that the response-matrix approach can be used to
-calculate combinations of coil currents that generate the expected
-first-order field pattern.
+predicted by COMSOL, with an overall fitted scale factor of
+$s=0.937$. This result shows that the response-matrix approach can be
+used to calculate combinations of coil currents that generate the
+expected first-order spatial field structure. The remaining overall
+amplitude difference can largely be described by a single
+normalization factor.
 
-The higher-order measurements provide more sensitive tests of the
-relative coil responses and of the response matrix. For the $G_{1,2}$
-mode, the local $B_z$ feature that is not reproduced by the nominal
-COMSOL calculation is largely recovered when the measured
-individual-coil calibration factors are included. This shows the
-importance of accounting for coil-to-coil response differences when
-many coils are combined.
+The higher-order harmonic measurements provide more sensitive tests of
+the relative coil responses and of the response matrix. For the
+$G_{1,2}$ mode, the local $B_z$ feature that is not reproduced by the
+nominal COMSOL calculation is substantially better reproduced when the
+experimentally determined individual-coil calibration factors are
+included. The improvement is also quantitative: the full-scan $B_z$
+RMS residual decreases from 5.562~nT to 1.480~nT, while the
+three-component RMS residual in the central region decreases from
+2.195~nT to 0.556~nT. These results demonstrate that differences in
+the responses of individual coils can significantly affect the field
+generated by a multi-coil current pattern and that a single global
+normalization is not sufficient for all higher-order modes.
 
-The $G_{2,1}$ mode gives a different result. The free-space-derived
-current solution produces a more symmetric measured profile, while the
-COMSOL-derived current solution shows a clear left--right asymmetry.
-The origin of this effect has not yet been identified. The comparison
-indicates that this mode is particularly sensitive to the response
-matrix used to determine the coil currents and motivates further
-investigation of the COMSOL model and response-matrix construction.
+The $G_{2,1}$ mode exhibits a different behaviour. The
+free-space-derived current solution produces a more symmetric measured
+profile, whereas the COMSOL-derived current solution shows a clear
+left--right asymmetry. The origin of this effect has not yet been
+identified. The present measurements therefore do not justify
+attributing the discrepancy to a particular component of the hardware
+or model. Instead, the $G_{2,1}$ result provides a useful diagnostic
+for further investigation of the COMSOL model, response-matrix
+construction, numerical precision, geometry, and magnetic boundary
+conditions.
 
-The $G_{3,0}$ and $G_{3,-2}$ measurements extend the tests to
-third-order harmonic modes. The measured field components reproduce
-the main spatial features predicted by the finite-coil COMSOL
-calculation. These measurements demonstrate that the shim-coil array
-can generate more complicated spatial field patterns in addition to
-the lower-order modes.
+Measurements of the $G_{3,0}$ and $G_{3,-2}$ modes extend the
+characterization to third-order harmonic fields. The measured field
+components reproduce the principal spatial features predicted by the
+finite-coil COMSOL calculation. Differences from the ideal harmonic
+targets become more apparent toward the ends of the scan, which is
+consistent with the fact that the target represents an ideal harmonic
+field whereas the experimental field is generated by a finite array of
+coils with fixed geometry. The agreement in the main spatial features
+shows that the array can generate field structures more complicated
+than the lower-order modes.
 
 The door-scan measurements provide an additional check of the
-vector-field analysis. Applying a $5^\circ$ rotation of the measured
-$B_x$ and $B_z$ components reduces the component mixing visible before
-the correction and improves the comparison with COMSOL. This result is
+vector-field analysis and coordinate treatment. Applying a
+$5^\circ$ rotation of the measured $B_x$ and $B_z$ components reduces
+the apparent component mixing and improves agreement with the COMSOL
+calculation for both representative coils. This behaviour is
 consistent with a small relative angular offset between the fluxgate
 measurement axes and the coordinate system used in the field model.
 
-The harmonic-mode characterization presented here is based mainly on
-one-dimensional scans along the $x$ direction, supplemented by
-measurements along the $y$ direction through the MSR door. These
-measurements do not by themselves demonstrate the final magnetic-field
-homogeneity throughout the full EDM-cell volume. The results should
-therefore be viewed as a characterization and validation of the
-prototype shim-coil system rather than as a final demonstration of the
-TUCAN shimming requirements.
+The characterization presented here is based primarily on
+one-dimensional scans through the central region of the MSR,
+supplemented by measurements through the door. These measurements
+therefore validate important aspects of the prototype shim-coil system
+and the response-matrix method, but they do not by themselves
+demonstrate the final magnetic-field homogeneity throughout the full
+EDM-cell volume.
 
-The next stage of this work will be to integrate the shim-coil system
+The next stage of the work will be to integrate the shim-coil system
 with the $B_0$ coil and determine the shim-current settings under the
-magnetic-field conditions of the assembled experiment. The field mapper
-and, potentially, Cs magnetometers can be used to characterize the
-residual field and determine the required shim-coil corrections.
-Continued refinement of the response matrix using the measured
-individual-coil responses will support this optimization.
+magnetic-field conditions of the assembled experiment. Full-volume
+field mapping will be required to characterize the residual field and
+to determine the correction currents needed to satisfy the field
+homogeneity requirements. Further refinement of the COMSOL response
+matrix using the measured individual-coil responses, together with
+additional field information from the mapper and potentially Cs
+magnetometers, will support this optimization.
 
-Overall, the measurements show that the square shim-coil array can
-generate controlled magnetic-field patterns inside the TUCAN MSR and
-that the measured response is described reasonably well by the COMSOL
-model. The results also show the importance of individual-coil
-calibration, continued validation of the response matrix, and careful
-treatment of the measurement coordinate system for accurate magnetic
-field control.
+Overall, the measurements demonstrate that the prototype square
+shim-coil array can generate controlled magnetic-field patterns inside
+the TUCAN MSR and that the principal spatial behaviour is described
+reasonably well by the COMSOL model. The results also show that
+individual-coil calibration, continued validation of the response
+matrix, and careful treatment of the measurement coordinate system are
+important for accurate magnetic-field control. These studies provide
+the experimental basis for the next stage of magnetic shimming in the
+TUCAN EDM experiment.
+
 
 
 \section{Mapping results}\label{sec7}
