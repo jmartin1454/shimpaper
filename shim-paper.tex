@@ -929,7 +929,7 @@ We have now completed COMSOL simulations which include the effects of
 the highly permeable MSR walls.  The results also indicate
 satisfactory homogeneity for the various field shapes assumed in the
 study.  The COMSOL simulations will be described in
-Section~\ref{sec:something}, and compared with data.
+Section~\ref{sec:comsol}, and compared with data.
 
 \section{Design and construction of current source}
 
@@ -1028,8 +1028,10 @@ current source.
     door itself).}
   \label{fig:msr_prototype_install}
 \end{figure}
-\section{Mapping results}
-\label{sec:mapping_results}
+
+
+\section{Mapping procedure and individual coil maps}
+\label{sec:individual_coils}
 % ==========================================================
 
 The prototype shim-coil system was characterized by measuring the
@@ -1059,15 +1061,22 @@ COMSOL model, while the harmonic-mode measurements test whether the
 responses of many coils can be combined to generate the desired
 spatial field patterns.
 
+\begin{itemize}
+\item COMSOL model is described in Section~\ref{sec:comsol}.
+\end{itemize}
+
 Additional measurements were performed along the $y$ direction through
 the MSR door. These measurements provide a second scan geometry and
 allow the coordinate transformation used for the fluxgate measurements
 to be examined.
 
+\begin{itemize}
+\item Door maps are presented in Section~\ref{sec:somewhere}.
+\end{itemize}
+
 
 % ==========================================================
-\subsection{Individual-coil measurements}
-\label{sec:individual_coils}
+%\subsection{Individual-coil measurements}
 % ==========================================================
 
 Each of the 54 shim coils was mapped individually using currents of
@@ -1137,7 +1146,90 @@ setpoints were obtained from the response matrix for the corresponding
 target harmonic field.
 
 
+\section{COMSOL model}
+
+\subsection{What is COMSOL? (cite)}
+
+\subsection{Explain elements of model (figures)}
+
+The geometrical elements of the COMSOL model are shown in
+Fig.~\ref{fig:comgeom}.
+\begin{figure}
+    \centering
+    \includegraphics[width=0.49\linewidth]{comsol_figs/geometry-isometric-crop.png}
+    \includegraphics[width=0.49\linewidth]{comsol_figs/geometry-top-view-crop.png}
+    \caption{COMSOL geometry.  Coils on the surface of infinite mu
+      material (field must enter vertically into the material).  Coil
+      0 is highlighted.  Coordinate system is the same as used in the
+      figures.  Top view.  Y points North.  X points East.  Z points
+      up.  Coil 0 again highlighted.  (Edge current 0.)  Door is at
+      the top of the figure.}
+    \label{fig:comgeom}
+\end{figure}
+
+ All boundaries are
+      set to "Perfect Magnetic Conductor", i.e. mu = infinity.
+
+\subsection{Explain how we use the model for individual coils (see below)}
+
+Fig.~\ref{fig:comstream} shows results for streamlines of the magnetic
+field when coil 0 is energized.
+\begin{figure}
+    \centering
+    \includegraphics[width=0.49\linewidth]{comsol_figs/streamlines-isometric-crop.png}
+    \includegraphics[width=0.49\linewidth]{comsol_figs/streamlines-top-view-crop.png}
+    \caption{Isometric view of field lines emanating from Coil 0.
+      Top view. Coil 0 set to 1 Ampere. Colours show
+      |vec{B}|. Streamlines show vecB. Streamlines enter mu-metal
+      perpendicular to the surface, as they must.  }
+    \label{fig:comstream}
+\end{figure}
+
+
+In COMSOL, we record maps of the field along the x-axis, when each
+coil is set to 1 Ampere.  The simulation is written in such a way that
+a parametric sweep over all the coils can be performed, so that the
+field profile of each coil can be calculated in one study.  All the
+field maps are saved to a single file, which is processed with our
+python script.  If we want to find the expected field map for Coil 0,
+we just look at the first three columns of the file.  The next three
+columns are for Coil 1, and so on.  Since our individual-coil field
+maps are done for 40 mA applied current, we just rescale the field by
+a factor 0.040*3, where the factor 3 results from having wound three
+turns for each coil.
+
+
+\subsection{Explain how we use the model to generate gradients.}
+
+If we want to calculate the field from a set of
+coils energized at the same time, we take linear combinations of the
+field maps, weighted by the current in each coil, to give the expected
+field.  In this way, we can calculate the expected field for any set
+of coil currents (e.g. the settings we use to produce G10, G21, G12,
+...)
+
+The COMSOL model also calculates the magnetic field at the 27 control
+points on the 3x3x3 grid which we use as control points.  (This is
+done in addition to calculating the field along each axis.)  The field
+produced by each coil at each of the 27 control points gives the 81x54
+matrix which we call M.  Its pseudoinverse may be use to decide the
+coil currents that are selected to produce a particular target field
+across the 27 control points.  This is exactly what we do in the
+free-space simulations, except in this case, the matrix has been
+calculated by COMSOL rather than our Biot-Savart integrator.  This is
+more like what we will eventually do in the experiment, using field
+maps of each coil, or the Cs magnetometer responses to each coil, to
+decide the currents when attempting to generate a particular field
+profile.  In this case, we have optionally used either the COMSOL
+model, or the free-space model, to determine the matrix, because we
+did not have a mapper that could scan easily in 3D space, nor
+constellation of Cs magnetometers available, at the time the studies
+were conducted.  Both a mapper and multiple Cs magnetometers are of
+course planned, in the future.
+
 % ==========================================================
+\section{Mapping of gradient modes}
+
 \subsection{Generation of the $G_{1,0}$ mode}
 \label{sec:g10}
 % ==========================================================
