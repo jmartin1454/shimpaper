@@ -231,13 +231,13 @@ MSRs in active feedback systems, to improve the magnetic shielding
 factor and overall stability of the shielded field
 \cite{bib:franke-thesis,bib:rawlik-thesis,bib:shomi-thesis,bib:rawlik-amjphys,bib:abel-epjc-2023,bib:arxiv2601.22960}.
 The techniques were adapted to the problem of internal magnetic field
-shimming.  This is not a new usage of matrix techniques, but the
+shimming.  This is not a new use of the matrix techniques, but the
 application to internal shimming is not often discussed in detail in
 the literature.
 
 This paper outlines the design considerations for the TUCAN EDM shim
 coil system, design process, prototype design, and initial results
-from the prototype using a primitive mapper using a fluxgate
+from the prototype using a primitive mapper with a fluxgate
 magnetometer.  While the design originally used free-space calculation
 techniques, the final results use COMSOL simulations to decide the
 currents to produce the desired fields, and the fields are compared
@@ -303,28 +303,36 @@ with data on neutron visibility from PSI in Ref.~\cite{bib:Abel2019}
 and found to agree well with data.  Eq.~(\ref{eq:alphagrav}) was found
 to be valid in a more limited range of $G_{1,0}\lesssim 30$~pT/cm.
 
-In Fig.~\ref{fig:g10_visibility}, we graph both
-Eqs.~(\ref{eq:alphagrav}) and (\ref{eq:alphamag}) using parameters
-relevant to the TUCAN EDM experiment.  This shows that gravitationally
-enhanced depolarization (via $G_{1,0}$) tends to limit the visibility
-$\alpha$ more stringently, for vertical gradients.  The parameters
-used in making the graph are...???
+Fig.~\ref{fig:g10_visibility} displays both Eqs.~(\ref{eq:alphagrav})
+and (\ref{eq:alphamag}) using parameters relevant to the PSI nEDM
+experiment (successfully reproducing the curves in Figs.~? and ?
+of~\cite{bib:Abel2019}).  This shows that gravitationally enhanced
+depolarization (via $G_{1,0}$) tends to limit the visibility $\alpha$
+more stringently than intrinsic depolarization, for vertical
+gradients.
 \begin{figure}[tbp]
   \centering
   \includegraphics[width=0.90\linewidth]{Fig1Gravitational2.png}
   \caption{Calculated neutron visibility $\alpha$ after $T=180$~s as a
     function of the vertical gradient $G_{1,0}$, comparing
     gravitationally enhanced depolarization and intrinsic
-    depolarization. The curves are obtained from the first-order gradient model
-using Eqs.~(\ref{eq:alphagrav}) and~(\ref{eq:alphamag})
-with parameters
-$T = 180~\mathrm{s}$,
-$\mathrm{Var}(\bar{z}) = 0.18~\mathrm{cm}^{2}$,
-$v = 3.0~\mathrm{m\,s^{-1}}$,
-$H = 0.12~\mathrm{m}$,
-and $G_{1,1}=G_{1,-1}=0$.
+    depolarization. The curves are obtained from the first-order
+    gradient model using Eqs.~(\ref{eq:alphagrav})
+    and~(\ref{eq:alphamag}) with parameters $T = 180~\mathrm{s}$,
+    $\mathrm{Var}(\bar{z}) = 0.18~\mathrm{cm}^{2}$, $v =
+    3.0~\mathrm{m\,s^{-1}}$, $H = 0.12~\mathrm{m}$, and
+    $G_{1,1}=G_{1,-1}=0$.  For gravitationally enhanced
+    depolarization, $\alpha_0=0.75$ has been used, while for intrinsic
+    depolarization $\alpha_0=0.74$ has been used, in order to make the
+    graphs consistent with their depiction in~\cite{bib:Abel2019} (see
+    text).
   \label{fig:g10_visibility}}
 \end{figure}
+In~\cite{bib:Abel2019}, the curves were compared with data using
+spin-echo techniques to isolate the contributions from gravitational
+and intrinsic depolarization.  The experiments gave different values
+of $\alpha_0$, which is why Fig.~\ref{fig:g10_visibility} uses two
+different assumptions for this parameter.
 
 For the present design study, we adopted the working goal
 \begin{equation}
@@ -394,12 +402,18 @@ results as Eqs.~(\ref{eq:dbz}) and (\ref{eq:sbz}).  The resultant
 constraint turns out to be weaker, so we retained the constraints in
 Eq.~(\ref{eq:bzmetrics}).
 
-A further requirement comes from transverse magnetic fields. To lowest
-order, the difference between the $^{199}$Hg comagnetometer frequency,
-which senses $B_z$, and the neutron frequency, which senses
-$|\vec{B}|$, differ by a factor $(1+\frac{\langle
-  B_T^2\rangle}{2B_0^2})$, where $B_0$ is the nominal holding field,
-and
+Transverse magnetic fields can also cause depolarization.  As noted in
+Ref.~\cite{bib:Abel2019}, requirements on
+transverse fields are usually satisfied once the $B_z$ homogeneity is
+sufficiently good.  Our studies confirmed this and
+Eq.~(\ref{eq:bzmetrics}) was found to be sufficient.
+
+Transverse magnetic fields also impact systematic effects in the nEDM
+experiment.  To lowest order, the difference between the $^{199}$Hg
+comagnetometer frequency, which senses $B_z$, and the neutron
+frequency, which senses $|\vec{B}|$, differ by a factor
+$(1+\frac{\langle B_T^2\rangle}{2B_0^2})$, where $B_0$ is the nominal
+holding field, and
 \begin{equation}
   \langle B_T^2\rangle=\langle(B_x-\langle B_x\rangle)^2+(B_y-\langle B_y\rangle)^2\rangle
 \end{equation}
@@ -407,11 +421,12 @@ where the averages are over the measurement cell volume.  A
 requirement may be placed on $\langle B_T^2\rangle$ to ensure that
 there is not a systematic difference between the comagnetometer and
 neutron measured frequencies.  In the PSI experiment, $\langle
-B_T^2\rangle < 1$~nT$^2$ was typically achieved.  As noted in
-Ref.~\cite{bib:Abel2019} CHECK THAT IT SAYS THIS, requirements on
-transverse fields are usually satisfied once the $B_z$ homogeneity is
-sufficiently good.  Our studies confirmed this and
-Eq.~(\ref{eq:bzmetrics}) was found to be sufficient.
+B_T^2\rangle < 1$~nT$^2$ was typically achieved, limited by the
+ability to measure the transverse fields.  For transverse fields
+affecting systematic errors, our plan is to perform careful magnetic
+mapping, to measure them, rather than control them to be small.
+Transverse fields were therefore generally not considered as a
+signficant constraint on the design of the shim coil system.
 
 \section{Design studies}\label{sec:designstudies}
 
